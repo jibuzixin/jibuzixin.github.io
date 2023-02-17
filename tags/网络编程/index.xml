@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>网络编程 on 腹有诗书气自华</title>
+    <link>https://jibuzixin.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</link>
+    <description>Recent content in 网络编程 on 腹有诗书气自华</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://jibuzixin.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UNIX网络编程入门</title>
+      <link>https://jibuzixin.github.io/post/unix%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/unix%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</guid>
+      <description>UNIX网络编程初入 一、main函数传参 int mian(int argc, char **argv) argc表示传入argv的字符串个数 argv[0]表示程序 运行的全路径 argv[1]表示传</description>
+    </item>
+    
+    <item>
+      <title>winsock编程入门</title>
+      <link>https://jibuzixin.github.io/post/winsock%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/winsock%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</guid>
+      <description>(WinSocket自学开始) 一、声明 本人在自学过程中在此记录学习心得，如果内容有欠妥的地方还请在此下方批评，或私信，谢谢阅读。 二、常用的基</description>
+    </item>
+    
+  </channel>
+</rss>

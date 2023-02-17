@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="腹有诗书气自华">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="img/小黑.png">
+    <meta property="twitter:image" content="img/小黑.png" />
+    
+
+    
+    <meta name="title" content="gcc和g&#43;&#43;的区别" />
+    <meta property="og:title" content="gcc和g&#43;&#43;的区别" />
+    <meta property="twitter:title" content="gcc和g&#43;&#43;的区别" />
+    
+
+    
+    <meta name="description" content="突然在学习linux的时候对网络编程感兴趣，然后又了解了gcc，然后又看见了makefile，又是shell一系列的东西。烦！！！！">
+    <meta property="og:description" content="突然在学习linux的时候对网络编程感兴趣，然后又了解了gcc，然后又看见了makefile，又是shell一系列的东西。烦！！！！" />
+    <meta property="twitter:description" content="突然在学习linux的时候对网络编程感兴趣，然后又了解了gcc，然后又看见了makefile，又是shell一系列的东西。烦！！！！" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="赵化冰, zhaohuabing, Zhaohuabing, , 赵化冰的网络日志, 赵化冰的博客, Zhaohuabing Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>gcc和g&#43;&#43;的区别 | yzy的博客</title>
+
+    <link rel="canonical" href="/post/gcc%E5%92%8Cg&#43;&#43;%E7%9A%84%E5%8C%BA%E5%88%AB/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.1/css/all.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">腹有诗书气自华</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">所有文章</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/c/c&#43;&#43;">c/c&#43;&#43;</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/java">java</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E5%90%8E%E7%AB%AF">后端</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E7%94%9F%E6%B4%BB">生活</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/notes/">编程历程</a></li>
+                    
+                        <li><a href="/about/">关于我</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/%e5%b0%8f%e9%bb%91.png')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/gcc" title="gcc">
+                            gcc
+                        </a>
+                        
+                        <a class="tag" href="/tags/linux" title="linux">
+                            linux
+                        </a>
+                        
+                    </div>
+                    <h1>gcc和g&#43;&#43;的区别</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                忌不自信
+                             
+                            on 
+                            Monday, January 1, 0001
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <h1 id="一gcc和g的区别是什么">一、gcc和g++的区别是什么</h1>
+<blockquote>
+<p>gcc 指令也为用户提供了“手动指定代表编译方式”的接口，即使用 -x 选项。例如，gcc -xc xxx 表示以编译 C 语言代码的方式编译 xxx 文件；而 gcc -xc++ xxx 则表示以编译 C++ 代码的方式编译 xxx 文件。</p>
+<p>[root@bogon ~]# g++ demo.cpp #或者 gcc -xc++ -lstdc++ -shared-libgcc demo.cpp</p>
+</blockquote>
+<h1 id="二编译过程">二、编译过程</h1>
+<p><strong>未预处理的.c文件</strong> &mdash;-&gt;<strong>预处理但未编译.i文件</strong> &mdash;-&gt;<strong>编译的汇编代码.s</strong> &mdash;-&gt;<strong>.o目标文件</strong></p>
+<h1 id="三gcc常用的编译选项">三、GCC常用的编译选项</h1>
+<table>
+<thead>
+<tr>
+<th>指令选项</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-E（大写）</td>
+<td>预处理指定的源文件，不进行编译。</td>
+</tr>
+<tr>
+<td>-S（大写）</td>
+<td>编译指定的源文件，但是不进行汇编</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>编译、汇编指定的源文件，但是不进行链接。</td>
+</tr>
+<tr>
+<td>-o</td>
+<td>指定生成文件的文件名。</td>
+</tr>
+<tr>
+<td>-llibrary（-I library）</td>
+<td>其中 library 表示要搜索的库文件的名称。该选项用于手动指定链接环节中程序可以调用的库文件。建议 -l 和库文件名之间不使用空格，比如 -lstdc++。</td>
+</tr>
+<tr>
+<td>-ansi</td>
+<td>对于 C 语言程序来说，其等价于 -std=c90；对于 C++ 程序来说，其等价于 -std=c++98。</td>
+</tr>
+<tr>
+<td>-std=</td>
+<td>手动指令编程语言所遵循的标准，例如 c89、c90、c++98、c++11 等。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="四-e操作">四、-E操作</h1>
+<ul>
+<li>gcc 指令添加 -E 选项，即可控制 GCC 编译器仅对源代码做预处理操作。</li>
+</ul>
+<blockquote>
+<p>所谓预处理操作，主要是处理那些源文件和头文件中以 # 开头的命令（比如 #include、#define、#ifdef 等），并删除程序中所有的注释 // 和 /* &hellip; */。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>指令格式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gcc -E demo.c -o demo.i</code></td>
+<td>默认情况下预处理结果输出到屏幕上，不会保存到某个文件。该指令会和 -o 选项连用，将结果导入到文件中。</td>
+</tr>
+<tr>
+<td><code>gcc -E -C demo.c -o demo.i</code></td>
+<td>添加一个 -C 选项，阻止 GCC 删除源文件和头文件中的注释</td>
+</tr>
+</tbody>
+</table>
+<h2 id="常用选项">常用选项</h2>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-D name[=definition]</code></td>
+<td>在处理源文件之前，先定义宏 name。宏 name 必须是在源文件和头文件中都没有被定义过的。将该选项搭配源代码中的#ifdef name命令使用，可以实现条件式编译。如果没有指定一个替换的值（即省略 =definition），该宏被定义为值 1。</td>
+</tr>
+<tr>
+<td><code>-U name</code></td>
+<td>如果在命令行或 GCC 默认设置中定义过宏 name，则“取消”name 的定义。-D 和 -U 选项会依据在命令行中出现的先后顺序进行处理。</td>
+</tr>
+<tr>
+<td><code>-include file</code></td>
+<td>如同在源代码中添加 #include &ldquo;file&rdquo; 一样。</td>
+</tr>
+<tr>
+<td><code>-iquote dir</code></td>
+<td>对于以引号（#include &ldquo;&quot;）导入的头文件中，-iquote 指令可以指定该头文件的搜索路径。当 GCC 在源程序所在目录下找不到此头文件时，就会去 -iquote 指令指定的目录中查找。</td>
+</tr>
+<tr>
+<td><code>-I dir</code></td>
+<td>同时适用于以引号 &quot;&rdquo; 和 &lt;&gt; 导入的头文件。当 GCC 在 -iquote 指令指定的目录下搜索头文件失败时，会再自动去 -I 指定的目录中查找。该选项在 GCC 10.1 版本中已被弃用，并建议用 -iquote 选项代替。</td>
+</tr>
+<tr>
+<td><code>-isystem dir</code>           <code>-idirafter dir</code></td>
+<td>都用于指定搜索头文件的目录，适用于以引号 &quot;&quot; 和 &lt;&gt; 导入的头文件。</td>
+</tr>
+</tbody>
+</table>
+<p>其中，对于指定 #include 搜索路径的几个选项，作用的先后顺序如下：</p>
+<ul>
+<li>对于用 #include &quot;&quot; 引号形式引入的头文件，首先搜索当前程序文件所在的目录，其次再前往 -iquote 选项指定的目录中查找；</li>
+<li>前往 -I 选项指定的目录中搜索；</li>
+<li>前往 -isystem 选项指定的目录中搜索；</li>
+<li>前往默认的系统路径下搜索；</li>
+<li>前往 -idirafter 选项指定的目录中搜索。</li>
+</ul>
+<p><a href="https://gcc.gnu.org/onlinedocs/gcc-10.1.0/gcc/Preprocessor-Options.html#Preprocessor-Options">Preprocessor Options (Using the GNU Compiler Collection (GCC))</a></p>
+<h1 id="五-s选项">五、-S选项</h1>
+<ul>
+<li>通过给 gcc 指令添加 -S（注意是大写）选项，即可令 GCC 编译器仅将指定文件加工至编译阶段，并生成对应的汇编代码文件。</li>
+</ul>
+<blockquote>
+<p>编译是整个程序构建的核心部分，也是最复杂的部分之一。所谓编译，简单理解就是将预处理得到的程序代码，经过一系列的词法分析、语法分析、语义分析以及优化，加工为当前机器支持的汇编代码。</p>
+</blockquote>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@bogon demo]# gcc -S demo.i
+    
+[root@bogon demo]# gcc -S demo.i -o test.i
+</code></pre><p>需要注意的是，gcc -S 指令操作的文件并非必须是经过预处理后得到的 .i 文件，-S 选项的功能是令 GCC 编译器将指定文件处理至编译阶段结束。这也就意味着，gcc -S 指令可以操作预处理后的 .i 文件，也可以操作源代码文件：</p>
+<ul>
+<li>如果操作对象为 .i 文件，则 GCC 编译器只需编译此文件；</li>
+<li>如果操作对象为 .c 或者 .cpp 源代码文件，则 GCC 编译器会对其进行预处理和编译这 2 步操作。</li>
+</ul>
+<p>如果想提高文件内汇编代码的可读性，可以借助 -fverbose-asm 选项，GCC 编译器会自行为汇编代码添加必要的注释，例如：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@bogon demo]# gcc -S demo.c -fverbose-asm
+</code></pre><h1 id="六-c选项">六、-c选项</h1>
+<ul>
+<li>通过为 gcc 指令添加 -c 选项（注意是小写字母 c），即可让 GCC 编译器将指定文件加工至汇编阶段，并生成相应的目标文件。</li>
+</ul>
+<blockquote>
+<p>简单地理解，汇编其实就是将汇编代码转换成可以执行的机器指令。大部分汇编语句对应一条机器指令，有的汇编语句对应多条机器指令。相对于编译操作，汇编过程会简单很多，它并没有复杂的语法，也没有语义，也不需要做指令优化，只需要根据汇编语句和机器指令的对照表一一翻译即可。</p>
+</blockquote>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@bogon demo]# gcc -c demo.s
+</code></pre><h1 id="七-l选项">七、-l选项</h1>
+<p><a href="http://c.biancheng.net/view/2382.html">GCC -l选项：手动添加链接库 (biancheng.net)</a></p>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/html/" data-toggle="tooltip" data-placement="top" title="HTML小结">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/%E5%A4%A7%E4%B8%80%E5%BB%BA%E8%AE%AE/" data-toggle="tooltip" data-placement="top" title="对大一的建议">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                 
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/spring' title="spring">
+                            spring
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E5%89%8D%E7%AB%AF' title="前端">
+                            前端
+                        </a>
+                        
+                        
+                        
+                        <a href='/tags/%E5%90%8E%E7%AB%AF' title="后端">
+                            后端
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E7%94%9F%E6%B4%BB' title="生活">
+                            生活
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B' title="网络编程">
+                            网络编程
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:this.jibuzixin@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    <li>
+                        <a target="_blank" href="/img/%e5%be%ae%e4%bf%a1%e6%89%ab%e7%a0%81.png">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/jibuzixin">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; 腹有诗书气自华 2023
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>

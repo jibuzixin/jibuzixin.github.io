@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gcc on 腹有诗书气自华</title>
+    <link>https://jibuzixin.github.io/tags/gcc/</link>
+    <description>Recent content in gcc on 腹有诗书气自华</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://jibuzixin.github.io/tags/gcc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>gcc和g&#43;&#43;的区别</title>
+      <link>https://jibuzixin.github.io/post/gcc%E5%92%8Cg&#43;&#43;%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/gcc%E5%92%8Cg&#43;&#43;%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+      <description>一、gcc和g++的区别是什么 gcc 指令也为用户提供了“手动指定代表编译方式”的接口，即使用 -x 选项。例如，gcc -xc xxx 表示以编译 C 语言代码的方式编</description>
+    </item>
+    
+  </channel>
+</rss>

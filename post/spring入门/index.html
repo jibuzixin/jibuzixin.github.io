@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="腹有诗书气自华">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="img/小黑.png">
+    <meta property="twitter:image" content="img/小黑.png" />
+    
+
+    
+    <meta name="title" content="spring入门" />
+    <meta property="og:title" content="spring入门" />
+    <meta property="twitter:title" content="spring入门" />
+    
+
+    
+    <meta name="description" content=" ">
+    <meta property="og:description" content=" " />
+    <meta property="twitter:description" content=" " />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="赵化冰, zhaohuabing, Zhaohuabing, , 赵化冰的网络日志, 赵化冰的博客, Zhaohuabing Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>spring入门 | yzy的博客</title>
+
+    <link rel="canonical" href="/post/spring%E5%85%A5%E9%97%A8/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.1/css/all.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">腹有诗书气自华</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">所有文章</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/c/c&#43;&#43;">c/c&#43;&#43;</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/java">java</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E5%90%8E%E7%AB%AF">后端</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E7%94%9F%E6%B4%BB">生活</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/notes/">编程历程</a></li>
+                    
+                        <li><a href="/about/">关于我</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/%e5%b0%8f%e9%bb%91.png')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/spring" title="spring">
+                            spring
+                        </a>
+                        
+                        <a class="tag" href="/tags/%E5%90%8E%E7%AB%AF" title="后端">
+                            后端
+                        </a>
+                        
+                    </div>
+                    <h1>spring入门</h1>
+                    <h2 class="subheading">依据B站黑马视频</h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                忌不自信
+                             
+                            on 
+                            Monday, January 1, 0001
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <h1 id="一加载xml文件classpathxmlapplicationcontext">一、加载xml文件/ClassPathXmlApplicationContext</h1>
+<h2 id="10概要">1.0概要</h2>
+<blockquote>
+<p>通过xml管理bean，引用外部约束去给具有集合属性的bean赋值</p>
+<p>通过解析xml文件，构造一个实体类</p>
+<p>通过这个实体类来获取需要的实体对象</p>
+</blockquote>
+<h2 id="11使用子接口classpathxmlapplicationcontext">1.1使用子接口ClassPathXmlApplicationContext</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>ApplicationContext classPathXmlApplicationContext <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> ClassPathXmlApplicationContext<span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;applocationContext.xml&#34;</span><span style="color:#ff79c6">);</span>
+</span></span></code></pre></div><h2 id="12获取bean">1.2获取bean</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>hello bean <span style="color:#ff79c6">=</span> classPathXmlApplicationContext<span style="color:#ff79c6">.</span><span style="color:#50fa7b">getBean</span><span style="color:#ff79c6">(</span>hello<span style="color:#ff79c6">.</span><span style="color:#50fa7b">class</span><span style="color:#ff79c6">);</span>
+</span></span></code></pre></div><ul>
+<li>可以通过类、<code>id</code>来获取<code>bean</code></li>
+<li>也可以通过继承接口的接口类型来获取实体类（<strong>前提</strong>是继承的类要==唯一==）</li>
+</ul>
+<h2 id="13配置文件xml">1.3配置文件xml</h2>
+<h3 id="131set注入">1.3.1set注入</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;bean</span> <span style="color:#50fa7b">id=</span><span style="color:#f1fa8c">&#34;stu&#34;</span> <span style="color:#50fa7b">class=</span><span style="color:#f1fa8c">&#34;com.local.Student&#34;</span><span style="color:#ff79c6">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;property</span> <span style="color:#50fa7b">name=</span><span style="color:#f1fa8c">&#34;name&#34;</span> <span style="color:#50fa7b">value=</span><span style="color:#f1fa8c">&#34;asd&#34;</span><span style="color:#ff79c6">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;property</span> <span style="color:#50fa7b">name=</span><span style="color:#f1fa8c">&#34;score&#34;</span> <span style="color:#50fa7b">value=</span><span style="color:#f1fa8c">&#34;23&#34;</span><span style="color:#ff79c6">&gt;&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;property</span> <span style="color:#50fa7b">name=</span><span style="color:#f1fa8c">&#34;sex&#34;</span> <span style="color:#50fa7b">value=</span><span style="color:#f1fa8c">&#34;nan&#34;</span><span style="color:#ff79c6">&gt;&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;/bean&gt;</span>
+</span></span></code></pre></div><ul>
+<li>此方法为通过<code>set</code>注入，需要有各个属性的<code>set</code>方法</li>
+</ul>
+<h3 id="132构造器注入">1.3.2构造器注入</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;constructor-arg</span> <span style="color:#50fa7b">value=</span><span style="color:#f1fa8c">&#34;值&#34;</span> <span style="color:#50fa7b">name=</span><span style="color:#f1fa8c">&#34;属性名称&#34;</span><span style="color:#ff79c6">&gt;&lt;/constructor-arg&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;constructor-arg</span> <span style="color:#50fa7b">value=</span><span style="color:#f1fa8c">&#34;值&#34;</span> <span style="color:#50fa7b">name=</span><span style="color:#f1fa8c">&#34;属性名称&#34;</span><span style="color:#ff79c6">&gt;&lt;/constructor-arg&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;constructor-arg</span> <span style="color:#50fa7b">value=</span><span style="color:#f1fa8c">&#34;值&#34;</span> <span style="color:#50fa7b">name=</span><span style="color:#f1fa8c">&#34;属性名称&#34;</span><span style="color:#ff79c6">&gt;&lt;/constructor-arg&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;constructor-arg</span> <span style="color:#50fa7b">value=</span><span style="color:#f1fa8c">&#34;值&#34;</span> <span style="color:#50fa7b">name=</span><span style="color:#f1fa8c">&#34;属性名称&#34;</span><span style="color:#ff79c6">&gt;&lt;/constructor-arg&gt;</span>
+</span></span></code></pre></div><ul>
+<li>按照<code>constructor</code>的顺序与参数的顺序一一对应赋值，当具有<strong>二意</strong>性的时候可以使用<strong>name</strong>来指定属性</li>
+</ul>
+<h3 id="133特殊值的注入">1.3.3特殊值的注入</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;bean</span> <span style="color:#50fa7b">id=</span><span style="color:#f1fa8c">&#34;id&#34;</span> <span style="color:#50fa7b">class=</span><span style="color:#f1fa8c">&#34;class&#34;</span><span style="color:#ff79c6">&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">&lt;property</span> <span style="color:#50fa7b">name=</span><span style="color:#f1fa8c">&#34;name&#34;</span><span style="color:#ff79c6">&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#ff79c6">&lt;null/&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;/bean&gt;</span>
+</span></span></code></pre></div><ul>
+<li>设置<strong>null指针</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;bean</span> <span style="color:#50fa7b">id=</span><span style="color:#f1fa8c">&#34;stu&#34;</span> <span style="color:#50fa7b">class=</span><span style="color:#f1fa8c">&#34;com.local.Student&#34;</span><span style="color:#ff79c6">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&lt;property</span> <span style="color:#50fa7b">name=</span><span style="color:#f1fa8c">&#34;name&#34;</span> <span style="color:#50fa7b">value=</span><span style="color:#f1fa8c">&#34;asd&#34;</span><span style="color:#ff79c6">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&lt;property</span> <span style="color:#50fa7b">name=</span><span style="color:#f1fa8c">&#34;score&#34;</span> <span style="color:#ff79c6">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">&lt;value&gt;</span><span style="color:#ff79c6">&lt;![CDATA[
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;!--                特殊字符的内容            --&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">            ]]&gt;</span><span style="color:#ff79c6">&lt;/value&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&lt;property</span> <span style="color:#50fa7b">name=</span><span style="color:#f1fa8c">&#34;sex&#34;</span> <span style="color:#50fa7b">value=</span><span style="color:#f1fa8c">&#34;nan&#34;</span><span style="color:#ff79c6">&gt;&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;/bean&gt;</span>
+</span></span></code></pre></div><ul>
+<li><strong>CDATA</strong>区的内容原样解析</li>
+</ul>
+<h3 id="134类-类型的赋值">1.3.4类-类型的赋值</h3>
+<ul>
+<li><strong>外部</strong>，通过<strong>ref</strong>=“<code>id</code>”引用<code>ioc</code>容器的<code>bean</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;property</span> <span style="color:#50fa7b">name=</span><span style="color:#f1fa8c">&#34;name&#34;</span> <span style="color:#ff79c6">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;bean</span> <span style="color:#50fa7b">id=</span><span style="color:#f1fa8c">&#34;id&#34;</span> <span style="color:#50fa7b">class=</span><span style="color:#f1fa8c">&#34;class&#34;</span><span style="color:#ff79c6">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&lt;property</span> <span style="color:#50fa7b">name=</span><span style="color:#f1fa8c">&#34;name&#34;</span> <span style="color:#50fa7b">value=</span><span style="color:#f1fa8c">&#34;value&#34;</span><span style="color:#ff79c6">&gt;&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&lt;property</span> <span style="color:#50fa7b">name=</span><span style="color:#f1fa8c">&#34;name&#34;</span> <span style="color:#50fa7b">value=</span><span style="color:#f1fa8c">&#34;value&#34;</span><span style="color:#ff79c6">&gt;&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;/property&gt;</span>
+</span></span></code></pre></div><ul>
+<li><strong>内部</strong><code>bean</code>赋值，==不能==被直接用<code>ioc</code>容器获取</li>
+</ul>
+<h3 id="135数组的赋值">1.3.5数组的赋值</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;property</span> <span style="color:#50fa7b">name=</span><span style="color:#f1fa8c">&#34;name&#34;</span> <span style="color:#ff79c6">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">&lt;array&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">&lt;value&gt;&lt;/value&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">&lt;value&gt;&lt;/value&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">&lt;value&gt;&lt;/value&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">&lt;!--                &lt;ref bean=&#34;bean&#34;&gt;&lt;/ref&gt;--&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">&lt;/array&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&lt;/property&gt;</span>
+</span></span></code></pre></div><ul>
+<li><strong>内部</strong>的赋值，<code>value</code>字面值，<code>ref</code>引用<code>bean</code>；如果是<code>list</code>，把<code>array</code>换成<code>list</code>即可</li>
+</ul>
+<blockquote>
+<p>因为<code>list</code>集合的<code>bean</code>只会给<code>list</code>的属性赋值</p>
+<p>所以我们需要一个具有<strong>集合类型</strong>的bean</p>
+<p>需要使用<strong>util</strong>约束</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;util:list</span> <span style="color:#50fa7b">id=</span><span style="color:#f1fa8c">&#34;id&#34;</span><span style="color:#ff79c6">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;ref</span> <span style="color:#50fa7b">bean=</span><span style="color:#f1fa8c">&#34;&#34;</span><span style="color:#ff79c6">&gt;&lt;/ref&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;ref</span> <span style="color:#50fa7b">bean=</span><span style="color:#f1fa8c">&#34;&#34;</span><span style="color:#ff79c6">&gt;&lt;/ref&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;ref</span> <span style="color:#50fa7b">bean=</span><span style="color:#f1fa8c">&#34;&#34;</span><span style="color:#ff79c6">&gt;&lt;/ref&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;/util:list&gt;</span>
+</span></span></code></pre></div><ul>
+<li>所以以上就是在<strong>外部</strong>创建了一个集合类型的<code>bean</code>，然后<code>ref</code>被引用即可</li>
+</ul>
+<h3 id="136map集合的赋值">1.3.6Map集合的赋值</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;property</span> <span style="color:#50fa7b">name=</span><span style="color:#f1fa8c">&#34;name&#34;</span> <span style="color:#ff79c6">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;map&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&lt;entry</span> <span style="color:#50fa7b">key=</span><span style="color:#f1fa8c">&#34;&#34;</span> <span style="color:#50fa7b">value=</span><span style="color:#f1fa8c">&#34;&#34;</span><span style="color:#ff79c6">&gt;&lt;/entry&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;/map&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;/property&gt;</span>
+</span></span></code></pre></div><ul>
+<li><strong>内部</strong>赋值</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;util:map</span> <span style="color:#50fa7b">id=</span><span style="color:#f1fa8c">&#34;id&#34;</span><span style="color:#ff79c6">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;entry</span> <span style="color:#50fa7b">key=</span><span style="color:#f1fa8c">&#34;&#34;</span> <span style="color:#50fa7b">value=</span><span style="color:#f1fa8c">&#34;&#34;</span><span style="color:#ff79c6">&gt;&lt;/entry&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;/util:map&gt;</span>
+</span></span></code></pre></div><ul>
+<li><strong>外部</strong>引用</li>
+</ul>
+<h1 id="二管理数据源和外部属性文件">二、管理数据源和外部属性文件</h1>
+<h2 id="20概要">2.0概要</h2>
+<blockquote>
+<p>简单的使用<code>bean</code>来配置外部类</p>
+</blockquote>
+<h2 id="21连接数据源">2.1连接数据源</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;groupId&gt;</span>mysql<span style="color:#ff79c6">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;artifactId&gt;</span>mysql-connector-java<span style="color:#ff79c6">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;version&gt;</span>8.0.28<span style="color:#ff79c6">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;groupId&gt;</span>com.alibaba<span style="color:#ff79c6">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;artifactId&gt;</span>druid<span style="color:#ff79c6">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;version&gt;</span>1.0.31<span style="color:#ff79c6">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><ul>
+<li>配置依赖</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;bean</span> <span style="color:#50fa7b">id=</span><span style="color:#f1fa8c">&#34;dataSource&#34;</span> <span style="color:#50fa7b">class=</span><span style="color:#f1fa8c">&#34;com.alibaba.druid.pool.DruidDataSource&#34;</span><span style="color:#ff79c6">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;property</span> <span style="color:#50fa7b">name=</span><span style="color:#f1fa8c">&#34;driverClassName&#34;</span> <span style="color:#50fa7b">value=</span><span style="color:#f1fa8c">&#34;com.mysql.cj.jdbc.Driver&#34;</span><span style="color:#ff79c6">&gt;&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;property</span> <span style="color:#50fa7b">name=</span><span style="color:#f1fa8c">&#34;url&#34;</span> <span style="color:#50fa7b">value=</span><span style="color:#f1fa8c">&#34;jdbc:mysql://localhost:3306/db1?serverTimezone=UTC&#34;</span><span style="color:#ff79c6">&gt;&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;property</span> <span style="color:#50fa7b">name=</span><span style="color:#f1fa8c">&#34;username&#34;</span> <span style="color:#50fa7b">value=</span><span style="color:#f1fa8c">&#34;root&#34;</span><span style="color:#ff79c6">&gt;&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;property</span> <span style="color:#50fa7b">name=</span><span style="color:#f1fa8c">&#34;password&#34;</span> <span style="color:#50fa7b">value=</span><span style="color:#f1fa8c">&#34;12345678&#34;</span><span style="color:#ff79c6">&gt;&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;/bean&gt;</span>
+</span></span></code></pre></div><ul>
+<li>设置<code>bean</code>属性</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;context:property-placeholder</span> <span style="color:#50fa7b">location=</span><span style="color:#f1fa8c">&#34;jdbcdata.properties&#34;</span><span style="color:#ff79c6">&gt;&lt;/context:property-placeholder&gt;</span>
+</span></span></code></pre></div><ul>
+<li>通过<code>context</code>约束引入<code>properties</code>文件，就可以使用**${}**来使用值了</li>
+</ul>
+<h1 id="三bean的生命周期">三、bean的生命周期</h1>
+<h2 id="30概要">3.0概要</h2>
+<blockquote>
+<ol>
+<li>
+<p><strong>销毁</strong>的方法需要强制转化为另一个子接口才可以使用<code>close</code></p>
+</li>
+<li>
+<p><code>bean</code>的后置处理器对所有<code>bean</code>都有用</p>
+</li>
+<li></li>
+</ol>
+</blockquote>
+<h2 id="31初始化和销毁的方法">3.1初始化和销毁的方法</h2>
+<ul>
+<li>通过<code>bean</code>标签的<code>init-method</code>和<code>destroy-method</code>属性来确定方法</li>
+</ul>
+<h2 id="32bean的后置处理器">3.2bean的后置处理器</h2>
+<ul>
+<li>需要实现<code>BeanPostProcessor</code>接口，重写方法</li>
+<li>==注意：==<code>bean</code>的后置处理器不是针对某一个<code>bean</code>，而是对<code>ioc</code>容器里所有的<code>bean</code>都会执行</li>
+</ul>
+<h2 id="33bean的自动装配">3.3bean的自动装配</h2>
+<ul>
+<li>使用标签属性<code>aotuwire</code>
+<ul>
+<li><code>no default</code>：默认没有装配</li>
+<li><code>byName</code>：使用名称</li>
+<li><code>byType</code>：类型</li>
+</ul>
+</li>
+</ul>
+<h1 id="四注解管理">四、注解管理</h1>
+<h2 id="40概要">4.0概要</h2>
+<h2 id="41常用注解">4.1常用注解</h2>
+<blockquote>
+<p>他们本质没有什么区别，只是为了方便阅读</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>注解</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@Component</code></td>
+<td>普通</td>
+</tr>
+<tr>
+<td><code>@Controller</code></td>
+<td>控制层</td>
+</tr>
+<tr>
+<td><code>@Service</code></td>
+<td>业务层</td>
+</tr>
+<tr>
+<td><code>@Repository</code></td>
+<td>持久层</td>
+</tr>
+</tbody>
+</table>
+<h2 id="42扫描组件">4.2扫描组件</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;context:conponent-scan</span> <span style="color:#50fa7b">base-package=</span><span style="color:#f1fa8c">&#34;&#34;</span> <span style="color:#50fa7b">use-default-filters=</span><span style="color:#f1fa8c">&#34;false&#34;</span><span style="color:#ff79c6">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">&lt;!--不包含---&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">&lt;context:exclude-filter</span> <span style="color:#50fa7b">type=</span><span style="color:#f1fa8c">&#34;annotation&#34;</span> <span style="color:#50fa7b">expression=</span><span style="color:#f1fa8c">&#34;&#34;</span><span style="color:#ff79c6">&gt;&lt;/context:exclude-filter&gt;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">&lt;!--只包含---&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&lt;context:include-filter</span> <span style="color:#50fa7b">type=</span><span style="color:#f1fa8c">&#34;annotation&#34;</span> <span style="color:#50fa7b">expression=</span><span style="color:#f1fa8c">&#34;&#34;</span><span style="color:#ff79c6">&gt;&lt;/context:exclude-filter&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;/context:conponent-scan&gt;</span>
+</span></span></code></pre></div><p><strong>属性说明：</strong></p>
+<ul>
+<li><code>annotation</code>：表示对于所有的注解类型</li>
+<li><code>assignable</code>：表示对于指定的类</li>
+<li><code>use-default-filters</code>：默认是true，表示都扫描</li>
+<li><code>base-package</code>：要扫描的包或类</li>
+</ul>
+<p>==注意：==扫描之后<code>bean</code>的名称为<strong>类名的小驼峰</strong></p>
+<blockquote>
+<p>可以通过注解的<em>value</em>属性值也可以改名</p>
+</blockquote>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/spring%E7%9A%84%E5%B0%8F%E7%BB%86%E8%8A%82/" data-toggle="tooltip" data-placement="top" title="spring小细节">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/servelet/" data-toggle="tooltip" data-placement="top" title="Servelet">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                 
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/spring' title="spring">
+                            spring
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E5%89%8D%E7%AB%AF' title="前端">
+                            前端
+                        </a>
+                        
+                        
+                        
+                        <a href='/tags/%E5%90%8E%E7%AB%AF' title="后端">
+                            后端
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E7%94%9F%E6%B4%BB' title="生活">
+                            生活
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B' title="网络编程">
+                            网络编程
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:this.jibuzixin@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    <li>
+                        <a target="_blank" href="/img/%e5%be%ae%e4%bf%a1%e6%89%ab%e7%a0%81.png">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/jibuzixin">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; 腹有诗书气自华 2023
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>

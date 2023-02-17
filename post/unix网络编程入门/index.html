@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="腹有诗书气自华">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="img/小黑.png">
+    <meta property="twitter:image" content="img/小黑.png" />
+    
+
+    
+    <meta name="title" content="UNIX网络编程入门" />
+    <meta property="og:title" content="UNIX网络编程入门" />
+    <meta property="twitter:title" content="UNIX网络编程入门" />
+    
+
+    
+    <meta name="description" content=" ">
+    <meta property="og:description" content=" " />
+    <meta property="twitter:description" content=" " />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="赵化冰, zhaohuabing, Zhaohuabing, , 赵化冰的网络日志, 赵化冰的博客, Zhaohuabing Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>UNIX网络编程入门 | yzy的博客</title>
+
+    <link rel="canonical" href="/post/unix%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.1/css/all.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">腹有诗书气自华</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">所有文章</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/c/c&#43;&#43;">c/c&#43;&#43;</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/java">java</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E5%90%8E%E7%AB%AF">后端</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E7%94%9F%E6%B4%BB">生活</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/notes/">编程历程</a></li>
+                    
+                        <li><a href="/about/">关于我</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/%e5%b0%8f%e9%bb%91.png')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B" title="网络编程">
+                            网络编程
+                        </a>
+                        
+                    </div>
+                    <h1>UNIX网络编程入门</h1>
+                    <h2 class="subheading">依据《UNIX网络编程》一书</h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                忌不自信
+                             
+                            on 
+                            Monday, January 1, 0001
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <h1 id="unix网络编程初入">UNIX网络编程初入</h1>
+<hr>
+<h2 id="一main函数传参">一、main函数传参</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">mian</span>(<span style="color:#8be9fd">int</span> argc, <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">**</span>argv)
+</span></span></code></pre></div><ul>
+<li><code>argc</code>表示传入<code>argv</code>的字符串个数</li>
+<li><code>argv[0]</code>表示程序 运行的全路径</li>
+<li><code>argv[1]</code>表示传入的第一个字符串</li>
+<li>依次类似</li>
+</ul>
+<h2 id="二define和const">二、#define和const</h2>
+<ul>
+<li><code>#define</code>定义的是常数，在编译的时候决定</li>
+<li><code>const</code>声明的是常量，只有程序运行的时候才定值（相对于变量而言）</li>
+</ul>
+<h2 id="三unph头文件内置函数解读">三、unp.h头文件内置函数解读</h2>
+<ol>
+<li>
+<p><code>err_sys(char[] mag)</code></p>
+<p>当发生错误时，传入char[]字符串提示错误信息，并结束程序</p>
+</li>
+<li>
+<p><code>bzero(char *add, int size)</code></p>
+<p>使add地址的size大小空间清零</p>
+</li>
+<li>
+<p><code>#define struct sockaddr SA</code></p>
+<p><strong>sockaddr</strong>为通用套接字地址结构</p>
+<blockquote>
+<p>==注意：==每当一个套接字函数需要指向某个套接字地址结构的指针时，这个指针必须强制转换为通用套接字地址结构指针。这是因为套接字函数早于ANSI C标准。（感兴趣自行百度）</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="四相关函数解读">四、相关函数解读</h2>
+<h3 id="41端口-和ip-的格式转换">4.1<strong>端口</strong> 和<strong>IP</strong> 的格式转换</h3>
+<blockquote>
+<p>网际套接字<strong>结构体</strong> 中必须使用特定的格式。使用相应提供的函数转换</p>
+</blockquote>
+<ol>
+<li>
+<p><code>htons(int 端口号)</code></p>
+<p>主机到网络短整型，转换为二进制端口号</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>servaddr.sin_port   <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">htons</span>(<span style="color:#bd93f9">13</span>);
+</span></span></code></pre></div></li>
+<li>
+<p><code>inet_pton(int 协议类型, char *点分十进制地址， char *赋值的结构体中的地址)</code></p>
+<p>呈现形式到数值，例如127.0.0.1转为合适的格式</p>
+<p><a href="https://blog.csdn.net/zyy617532750/article/details/58595700">inet_pton()和inet_ntop()函数详解</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff79c6">if</span> (<span style="color:#50fa7b">inet_pton</span>(AF_INET, argv[<span style="color:#bd93f9">1</span>], <span style="color:#ff79c6">&amp;</span>servaddr.sin_addr) <span style="color:#ff79c6">&lt;=</span> <span style="color:#bd93f9">0</span>)         <span style="color:#50fa7b">err_quit</span>(<span style="color:#f1fa8c">&#34;inet_pton error for %s&#34;</span>, argv[<span style="color:#bd93f9">1</span>]);
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="42创建套接字">4.2<strong>创建套接字</strong></h3>
+<blockquote>
+<p>socket创建一个网际字节流套接字，该函数返回一个小整数 ==描述符==，以后所有函数调用该描述符来 ==标识==这个套接字。（也就是句柄）</p>
+</blockquote>
+<ol>
+<li>
+<p><code>socket(AF_INET, SOCK_STREAM, 0)</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff79c6">if</span> ( (sockfd <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">socket</span>(AF_INET, SOCK_STREAM, <span style="color:#bd93f9">0</span>)) <span style="color:#ff79c6">&lt;</span> <span style="color:#bd93f9">0</span>)                 <span style="color:#50fa7b">err_sys</span>(<span style="color:#f1fa8c">&#34;socket error&#34;</span>);
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="43建立与服务器链接">4.3<strong>建立与服务器链接</strong></h3>
+<ol>
+<li><code>int connect (int sockfd, struct sockaddr * serv_addr, int addrlen);</code>
+<ul>
+<li>句柄</li>
+<li>要连接的服务区地址，通用套接字指针</li>
+<li>连接服务器套接字的大小（sizeof）</li>
+</ul>
+</li>
+</ol>
+<h3 id="44读取数据">4.4<strong>读取数据</strong></h3>
+<ol>
+<li>
+<p><code>ssize_t read(int fd, void *buf, size_t count);</code></p>
+<p>返回值：成功返回读取的字节数，出错返回-1并设置errno，如果在调read之前已到达文件末尾，则这次read返回0</p>
+<ul>
+<li>句柄</li>
+<li>缓冲区</li>
+<li>缓冲区大小</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff79c6">while</span> ( (n <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">read</span>(sockfd, recvline, MAXLINE)) <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">0</span>) {
+</span></span><span style="display:flex;"><span>                 recvline[n] <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>;        <span style="color:#6272a4">/* null terminate */</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">if</span> (<span style="color:#50fa7b">fputs</span>(recvline, stdout) <span style="color:#ff79c6">==</span> EOF)
+</span></span><span style="display:flex;"><span>                        <span style="color:#50fa7b">err_sys</span>(<span style="color:#f1fa8c">&#34;fputs error&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> (n <span style="color:#ff79c6">&lt;</span> <span style="color:#bd93f9">0</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#50fa7b">err_sys</span>(<span style="color:#f1fa8c">&#34;read error&#34;</span>);
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="45绑定套接字">4.5绑定套接字</h3>
+<ol>
+<li><code>int bind(int sockfd, const struct sockaddr *address,    socklen_t address_len);</code>
+<ul>
+<li>套接字句柄</li>
+<li>绑定的地址结构</li>
+<li>地址结构的大小（sizeof）</li>
+</ul>
+</li>
+</ol>
+<h3 id="46监听套接字">4.6监听套接字</h3>
+<ol>
+<li>
+<p><code>Listen(listenfd, LISTENQ);</code></p>
+<blockquote>
+<ul>
+<li>套接字句柄</li>
+<li>unp.h定义的排队的最大客户连接数</li>
+</ul>
+<p>将<em>listenfd</em>转化为监听套接字</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="47接收套接字">4.7接收套接字</h3>
+<ol>
+<li><code>int accept(int sockfd, void *addr, int *addrlen);</code></li>
+</ol>
+<h2 id="五主机字节序网络字节序">五、主机字节序、网络字节序</h2>
+<blockquote>
+<p>主机字节序指，在本主机的字节存储数据中，不同主机有大端小端之分，为了保持数据传输与接受的一致性，在网际传输中使用网络字节序，当数据达到客户端或服务端时再反解。</p>
+</blockquote>
+<ul>
+<li><strong>inet_ntop()、inet_pton()</strong> : 点分十进制字符串（dotted-decimal notation）与网络字节序（network byte order）二进制数值互转</li>
+<li><strong>htons()、ntohs():</strong> 网络字节序（network byte order）与主机字节序（host byte order）互转</li>
+</ul>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/winsock%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/" data-toggle="tooltip" data-placement="top" title="winsock编程入门">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/spring%E7%9A%84%E5%B0%8F%E7%BB%86%E8%8A%82/" data-toggle="tooltip" data-placement="top" title="spring小细节">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                 
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/spring' title="spring">
+                            spring
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E5%89%8D%E7%AB%AF' title="前端">
+                            前端
+                        </a>
+                        
+                        
+                        
+                        <a href='/tags/%E5%90%8E%E7%AB%AF' title="后端">
+                            后端
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E7%94%9F%E6%B4%BB' title="生活">
+                            生活
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B' title="网络编程">
+                            网络编程
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:this.jibuzixin@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    <li>
+                        <a target="_blank" href="/img/%e5%be%ae%e4%bf%a1%e6%89%ab%e7%a0%81.png">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/jibuzixin">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; 腹有诗书气自华 2023
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>

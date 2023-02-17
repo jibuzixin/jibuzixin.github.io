@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>腹有诗书气自华</title>
+    <link>https://jibuzixin.github.io/</link>
+    <description>Recent content on 腹有诗书气自华</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 10 Dec 2022 09:38:00 +0000</lastBuildDate><atom:link href="https://jibuzixin.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>对实验室纳新的回答</title>
+      <link>https://jibuzixin.github.io/post/%E4%B8%80%E5%85%B3%E4%BA%8E%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Sat, 10 Dec 2022 09:38:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/%E4%B8%80%E5%85%B3%E4%BA%8E%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</guid>
+      <description>一、关于一些问题 1.1 打比赛的事 实验室之前也没啥组织，比赛的话大家可以去看看别的群里，或者蹭一下别人的，混一下名额都行。如果想要了解的可以让负责</description>
+    </item>
+    
+    <item>
+      <title>个人简历</title>
+      <link>https://jibuzixin.github.io/about/</link>
+      <pubDate>Tue, 25 Oct 2022 12:30:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/about/</guid>
+      <description>一、个人基本信息 姓名 尉卓洋 民族 汉 专业 软件工程 学历 目前本科大三 学校 中北大学 电话 15035452442 邮箱 1538406679@qq.com 二、教育背景 在学校学习了数据结构，汇编，数据库，计算机网</description>
+    </item>
+    
+    <item>
+      <title>建议学习的</title>
+      <link>https://jibuzixin.github.io/post/%E5%BB%BA%E8%AE%AE%E5%AD%A6%E4%B9%A0%E7%9A%84/</link>
+      <pubDate>Tue, 25 Oct 2022 12:30:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/%E5%BB%BA%E8%AE%AE%E5%AD%A6%E4%B9%A0%E7%9A%84/</guid>
+      <description>一、夯实基础 学院大部分的都会学java后端和前端开发，不过具体的还是要根据自己的兴趣来。刚开始的话把c语言学好对以后别的语言学习很有帮助，如</description>
+    </item>
+    
+    <item>
+      <title>对大一的建议</title>
+      <link>https://jibuzixin.github.io/post/%E5%A4%A7%E4%B8%80%E5%BB%BA%E8%AE%AE/</link>
+      <pubDate>Sat, 28 Nov 2020 12:30:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/%E5%A4%A7%E4%B8%80%E5%BB%BA%E8%AE%AE/</guid>
+      <description>网址、资源其实你可以百度都有，我顺便把我看的，觉得不错的给你放到前面这 c语言 视频：翁凯的c语言 书籍推荐： 学校的就可以 进阶书籍：《 c prime 》（应该</description>
+    </item>
+    
+    <item>
+      <title>gcc和g&#43;&#43;的区别</title>
+      <link>https://jibuzixin.github.io/post/gcc%E5%92%8Cg&#43;&#43;%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/gcc%E5%92%8Cg&#43;&#43;%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+      <description>一、gcc和g++的区别是什么 gcc 指令也为用户提供了“手动指定代表编译方式”的接口，即使用 -x 选项。例如，gcc -xc xxx 表示以编译 C 语言代码的方式编</description>
+    </item>
+    
+    <item>
+      <title>HTML小结</title>
+      <link>https://jibuzixin.github.io/post/html/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/html/</guid>
+      <description>HTML标签说明 &amp;lt;br/&amp;gt; 表示换行 &amp;lt;meta&amp;gt; 元数据（Metadata）是数据的数据信息。 META元素通常用于指定网页的描述，关键词，文件的最后修改时间，作者</description>
+    </item>
+    
+    <item>
+      <title>JavaScript</title>
+      <link>https://jibuzixin.github.io/post/js/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/js/</guid>
+      <description>一、js创建对象、扩展属性 使用花括号直接创建 var obj = { id:&amp;#34;011&amp;#34;, name:&amp;#34;我自己&amp;#34;, test:function(){ //方法体 } } //对象扩展属性，扩展属性和方法</description>
+    </item>
+    
+    <item>
+      <title>java小细节</title>
+      <link>https://jibuzixin.github.io/post/java%E5%B0%8F%E7%BB%86%E8%8A%82/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/java%E5%B0%8F%E7%BB%86%E8%8A%82/</guid>
+      <description>java小细节 从java7开始加上前缀0b可以写二进制数 从java7开始数字可以用1_000_000表示，为了方便人阅读 没有后缀的浮点数默认</description>
+    </item>
+    
+    <item>
+      <title>KMP算法实现</title>
+      <link>https://jibuzixin.github.io/post/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</guid>
+      <description>KMP算法实现 视频链接： 【最浅显易懂的 KMP 算法讲解】 kmp算法就是为了在比较字符不相等的时候可以回溯到合适的位置，而不像普通比较字符串的方法一</description>
+    </item>
+    
+    <item>
+      <title>markdown常用语法</title>
+      <link>https://jibuzixin.github.io/post/markdown%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/markdown%E8%AF%AD%E6%B3%95/</guid>
+      <description>常用语法 要是我写的比较难看，可以看看官方教程： Markdown 基本语法 | Markdown 官方教程 或者 Markdown 语法速查表 | Markdown 官方教程 以上链接复制的时候直接粘贴就会出现上面这个效</description>
+    </item>
+    
+    <item>
+      <title>Maven入门</title>
+      <link>https://jibuzixin.github.io/post/maven/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/maven/</guid>
+      <description>一、Maven 提供了一套标准化的项目结构 提供了一套标准化的构建流程 提供了一套依赖管理机制 二、Maven坐标 2.1 什么是坐标 坐标是==资源的唯一标</description>
+    </item>
+    
+    <item>
+      <title>redis指令</title>
+      <link>https://jibuzixin.github.io/post/redis%E6%8C%87%E4%BB%A4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/redis%E6%8C%87%E4%BB%A4/</guid>
+      <description>==注意：== 对于redis存储的同一个区域，所有类型的key存储在一起，不能重复，在获取的时候使用对应类型的方法获取 数值类型不能超过MAX</description>
+    </item>
+    
+    <item>
+      <title>Servelet</title>
+      <link>https://jibuzixin.github.io/post/servelet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/servelet/</guid>
+      <description>一、servelet请求乱码 get方法请求乱码 String fname = request.getParameter(&amp;#34;fname&amp;#34;); //转换为字节数组“ISO-8859-1”编码 byte[] bytes = fname.getBytes(&amp;#34;ISO-8859-1&amp;#34;); //重新编码 fname = new String(bytes, &amp;#34;UTF-8&amp;#34;); post请</description>
+    </item>
+    
+    <item>
+      <title>spring入门</title>
+      <link>https://jibuzixin.github.io/post/spring%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/spring%E5%85%A5%E9%97%A8/</guid>
+      <description>一、加载xml文件/ClassPathXmlApplicationContext 1.0概要 通过xml管理bean，引用外部约束去给具有集合属</description>
+    </item>
+    
+    <item>
+      <title>spring小细节</title>
+      <link>https://jibuzixin.github.io/post/spring%E7%9A%84%E5%B0%8F%E7%BB%86%E8%8A%82/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/spring%E7%9A%84%E5%B0%8F%E7%BB%86%E8%8A%82/</guid>
+      <description>动态sql &amp;lt;if test=&#39;&#39; &amp;gt;if语句 ，直接使用对象的属性就可以访问 &amp;lt;where&amp;gt;动态生成where，可以自动去掉语句前面的and但不可</description>
+    </item>
+    
+    <item>
+      <title>UNIX网络编程入门</title>
+      <link>https://jibuzixin.github.io/post/unix%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/unix%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</guid>
+      <description>UNIX网络编程初入 一、main函数传参 int mian(int argc, char **argv) argc表示传入argv的字符串个数 argv[0]表示程序 运行的全路径 argv[1]表示传</description>
+    </item>
+    
+    <item>
+      <title>winsock编程入门</title>
+      <link>https://jibuzixin.github.io/post/winsock%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/winsock%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</guid>
+      <description>(WinSocket自学开始) 一、声明 本人在自学过程中在此记录学习心得，如果内容有欠妥的地方还请在此下方批评，或私信，谢谢阅读。 二、常用的基</description>
+    </item>
+    
+  </channel>
+</rss>

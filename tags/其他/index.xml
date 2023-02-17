@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>其他 on 腹有诗书气自华</title>
+    <link>https://jibuzixin.github.io/tags/%E5%85%B6%E4%BB%96/</link>
+    <description>Recent content in 其他 on 腹有诗书气自华</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://jibuzixin.github.io/tags/%E5%85%B6%E4%BB%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>markdown常用语法</title>
+      <link>https://jibuzixin.github.io/post/markdown%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/markdown%E8%AF%AD%E6%B3%95/</guid>
+      <description>常用语法 要是我写的比较难看，可以看看官方教程： Markdown 基本语法 | Markdown 官方教程 或者 Markdown 语法速查表 | Markdown 官方教程 以上链接复制的时候直接粘贴就会出现上面这个效</description>
+    </item>
+    
+  </channel>
+</rss>

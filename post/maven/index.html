@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="腹有诗书气自华">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="img/小黑.png">
+    <meta property="twitter:image" content="img/小黑.png" />
+    
+
+    
+    <meta name="title" content="Maven入门" />
+    <meta property="og:title" content="Maven入门" />
+    <meta property="twitter:title" content="Maven入门" />
+    
+
+    
+    <meta name="description" content="Maven插件使用的目的是什么？是这样提高我们的工作效率的。">
+    <meta property="og:description" content="Maven插件使用的目的是什么？是这样提高我们的工作效率的。" />
+    <meta property="twitter:description" content="Maven插件使用的目的是什么？是这样提高我们的工作效率的。" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="赵化冰, zhaohuabing, Zhaohuabing, , 赵化冰的网络日志, 赵化冰的博客, Zhaohuabing Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Maven入门 | yzy的博客</title>
+
+    <link rel="canonical" href="/post/maven/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.1/css/all.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">腹有诗书气自华</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">所有文章</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/c/c&#43;&#43;">c/c&#43;&#43;</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/java">java</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E5%90%8E%E7%AB%AF">后端</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E7%94%9F%E6%B4%BB">生活</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/notes/">编程历程</a></li>
+                    
+                        <li><a href="/about/">关于我</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/%e5%b0%8f%e9%bb%91.png')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/%E6%8F%92%E4%BB%B6" title="插件">
+                            插件
+                        </a>
+                        
+                        <a class="tag" href="/tags/%E5%90%8E%E7%AB%AF" title="后端">
+                            后端
+                        </a>
+                        
+                    </div>
+                    <h1>Maven入门</h1>
+                    <h2 class="subheading">依据B站黑马视频</h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                忌不自信
+                             
+                            on 
+                            Monday, January 1, 0001
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <h1 id="一maven">一、Maven</h1>
+<ul>
+<li>提供了一套标准化的项目结构</li>
+<li>提供了一套标准化的构建流程</li>
+<li>提供了一套依赖管理机制</li>
+</ul>
+<h1 id="二maven坐标">二、Maven坐标</h1>
+<h2 id="21-什么是坐标">2.1 什么是坐标</h2>
+<ul>
+<li>坐标是==资源的唯一标识==</li>
+<li>使用坐标来定义项目或引用项目中的依赖</li>
+</ul>
+<h2 id="22-maven坐标组成">2.2 Maven坐标组成</h2>
+<ul>
+<li><strong>groupId：</strong> 当前maven项目隶属组织（通常是域名反写）</li>
+<li><strong>artifactId：</strong> maven项目名称</li>
+<li><strong>version：</strong> 当前版本</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;groupId&gt;</span>com.itheima<span style="color:#ff79c6">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;artifactId&gt;</span>maven-demo<span style="color:#ff79c6">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;version&gt;</span>1.0-SNAPSHOT<span style="color:#ff79c6">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">&lt;groupId&gt;</span>********<span style="color:#ff79c6">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">&lt;artifactId&gt;</span>******<span style="color:#ff79c6">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">&lt;version&gt;</span>*********<span style="color:#ff79c6">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><h1 id="三导入项目">三、导入项目</h1>
+<blockquote>
+<p>进入IDEA，找到maven，add maven project找到对应项目的xml文件双击即可</p>
+</blockquote>
+<h1 id="四依赖范围">四、依赖范围</h1>
+<p><code>&lt;scope&gt;</code>标签标识依赖范围</p>
+<table>
+<thead>
+<tr>
+<th>依赖范围</th>
+<th>编译</th>
+<th>测试</th>
+<th>运行</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>compile</code></td>
+<td>y</td>
+<td>y</td>
+<td>y</td>
+</tr>
+<tr>
+<td><code>test</code></td>
+<td>-</td>
+<td>y</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>provided</code></td>
+<td>y</td>
+<td>y</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>runtime</code></td>
+<td>-</td>
+<td>y</td>
+<td>y</td>
+</tr>
+<tr>
+<td><code>system</code></td>
+<td>y</td>
+<td>y</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>默认值<code>compile</code></li>
+</ul>
+<h1 id="五创建web">五、创建web</h1>
+<p>使用maven框架创建文件，在mian下添加java和resource</p>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/redis%E6%8C%87%E4%BB%A4/" data-toggle="tooltip" data-placement="top" title="redis指令">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/markdown%E8%AF%AD%E6%B3%95/" data-toggle="tooltip" data-placement="top" title="markdown常用语法">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                 
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/spring' title="spring">
+                            spring
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E5%89%8D%E7%AB%AF' title="前端">
+                            前端
+                        </a>
+                        
+                        
+                        
+                        <a href='/tags/%E5%90%8E%E7%AB%AF' title="后端">
+                            后端
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E7%94%9F%E6%B4%BB' title="生活">
+                            生活
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B' title="网络编程">
+                            网络编程
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:this.jibuzixin@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    <li>
+                        <a target="_blank" href="/img/%e5%be%ae%e4%bf%a1%e6%89%ab%e7%a0%81.png">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/jibuzixin">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; 腹有诗书气自华 2023
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>

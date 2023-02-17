@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="腹有诗书气自华">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="img/小黑.png">
+    <meta property="twitter:image" content="img/小黑.png" />
+    
+
+    
+    <meta name="title" content="markdown常用语法" />
+    <meta property="og:title" content="markdown常用语法" />
+    <meta property="twitter:title" content="markdown常用语法" />
+    
+
+    
+    <meta name="description" content=" ">
+    <meta property="og:description" content=" " />
+    <meta property="twitter:description" content=" " />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="赵化冰, zhaohuabing, Zhaohuabing, , 赵化冰的网络日志, 赵化冰的博客, Zhaohuabing Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>markdown常用语法 | yzy的博客</title>
+
+    <link rel="canonical" href="/post/markdown%E8%AF%AD%E6%B3%95/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.1/css/all.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">腹有诗书气自华</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">所有文章</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/c/c&#43;&#43;">c/c&#43;&#43;</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/java">java</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E5%90%8E%E7%AB%AF">后端</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E7%94%9F%E6%B4%BB">生活</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/notes/">编程历程</a></li>
+                    
+                        <li><a href="/about/">关于我</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/%e5%b0%8f%e9%bb%91.png')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/%E7%94%9F%E6%B4%BB" title="生活">
+                            生活
+                        </a>
+                        
+                        <a class="tag" href="/tags/%E5%85%B6%E4%BB%96" title="其他">
+                            其他
+                        </a>
+                        
+                    </div>
+                    <h1>markdown常用语法</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                忌不自信
+                             
+                            on 
+                            Monday, January 1, 0001
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <h1 id="常用语法">常用语法</h1>
+<p>要是我写的比较难看，可以看看官方教程：</p>
+<p><a href="https://markdown.com.cn/basic-syntax/">Markdown 基本语法 | Markdown 官方教程</a></p>
+<p>或者</p>
+<p><a href="https://markdown.com.cn/cheat-sheet.html">Markdown 语法速查表 | Markdown 官方教程</a></p>
+<p>以上链接复制的时候直接粘贴就会出现上面这个效果（图片也是）</p>
+<h1 id="一级标题">一级标题</h1>
+<h2 id="二级标题">二级标题</h2>
+<h3 id="三级标题">三级标题</h3>
+<h4 id="四级标题">四级标题</h4>
+<h5 id="五级标题">五级标题</h5>
+<p><strong>井号和文字之间要有空格才会有效果</strong>（以下表格语法是<code>|文字|文字|文字|</code>回车，换行要<!-- raw HTML omitted -->Ctrl<!-- raw HTML omitted -->+<!-- raw HTML omitted -->Enter<!-- raw HTML omitted -->，<!-- raw HTML omitted -->Tab<!-- raw HTML omitted -->键进入下一个单元格)</p>
+<h2 id="一简单效果表格演示">一、简单效果表格演示</h2>
+<table>
+<thead>
+<tr>
+<th>语法格式</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code># 一级标题</code></td>
+<td># 一级标题</td>
+</tr>
+<tr>
+<td><code>## 二级标题</code></td>
+<td>## 二级标题r4ey3t4tyw4t</td>
+</tr>
+<tr>
+<td>后续标题类似</td>
+<td>效果如上</td>
+</tr>
+<tr>
+<td><code>*斜体*</code></td>
+<td><em>斜体</em></td>
+</tr>
+<tr>
+<td><code>**加粗**</code></td>
+<td><strong>加粗</strong></td>
+</tr>
+<tr>
+<td><code>_斜体_</code></td>
+<td><em>斜体</em></td>
+</tr>
+<tr>
+<td><code>__加粗__</code></td>
+<td><strong>加粗</strong></td>
+</tr>
+<tr>
+<td><code>==高亮==</code></td>
+<td>==高亮==（这个颜色也可以改，涉及远了，估计你也看不到这）</td>
+</tr>
+<tr>
+<td><code>[百度链接](baidu.com)</code></td>
+<td><a href="baidu.com">百度链接</a></td>
+</tr>
+<tr>
+<td><code>&lt;kbd&gt;按键&lt;/kbd&gt;</code></td>
+<td><!-- raw HTML omitted -->按键<!-- raw HTML omitted --></td>
+</tr>
+<tr>
+<td><code>下标~233</code>~</td>
+<td>下标~233~</td>
+</tr>
+<tr>
+<td><code>上标^xxx^</code></td>
+<td>上标^xxx^</td>
+</tr>
+<tr>
+<td><strong>插入图片</strong></td>
+<td>直接复制粘贴就行了</td>
+</tr>
+<tr>
+<td><code>[toc]</code></td>
+<td>这个放到开头（文章第一行），就会自动生成目录</td>
+</tr>
+<tr>
+<td><code>**==*加粗高亮*==**</code></td>
+<td><strong>==<em>加粗高亮斜体</em>==</strong></td>
+</tr>
+<tr>
+<td><code>&gt; 引用块</code></td>
+<td>效果如下</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>这里是</p>
+<p>引用的效果</p>
+<p>敲两下回车退出</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>语法格式</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>``</td>
+<td>代码块效果如下</td>
+</tr>
+</tbody>
+</table>
+<p><code>这是代码块里的内容，虽然灰不溜秋的，但是可以改，等你有时间给你说，学好二级，到时候懂的方便</code></p>
+<h2 id="二表格的建立">二、表格的建立</h2>
+<p><strong>语法：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>|第一列|第二列|第三列|
+</span></span><span style="display:flex;"><span>（Ctrl + 回车 退出该框;	Ctrl + 退格键 + Shift 删除表格当前行）
+</span></span></code></pre></div><p><strong>效果：</strong></p>
+<table>
+<thead>
+<tr>
+<th>第一列</th>
+<th>第二列</th>
+<th>第三列</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内容</td>
+<td>内容</td>
+<td>内容</td>
+</tr>
+<tr>
+<td>第二行</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="三代码框的建立你里面也可以写其他的不过用引用那个比较好一点吧">三、代码框的建立（你里面也可以写其他的，不过用引用那个比较好一点吧）</h2>
+<p><strong>语法：</strong></p>
+<pre tabindex="0"><code class="language-mark" data-lang="mark">​```
+内容
+​```
+</code></pre><pre tabindex="0"><code>效果
+</code></pre><h2 id="四有序无序列表">四、有序无序列表</h2>
+<p><strong>无序列表</strong></p>
+<pre tabindex="0"><code>- 列表一
+- 列表二
+</code></pre><p><strong>效果：</strong></p>
+<ul>
+<li>列表一</li>
+<li>列表二</li>
+<li>敲两下回车退出</li>
+</ul>
+<p><strong>有序列表</strong></p>
+<pre tabindex="0"><code>1. 一
+2. 二
+	- 下级
+		+ 下级
+（点和后面的字之间要有空格，才能显示效果）
+</code></pre><ol>
+<li>一</li>
+<li>二</li>
+<li>三
+<ul>
+<li>下级
+<ul>
+<li>下级</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p><strong>复选框：</strong></p>
+<pre tabindex="0"><code>- [ ] 苹果
+- [x] 篮球
+
+（鼠标可以点击选中）
+</code></pre><ul>
+<li><input disabled="" type="checkbox"> 苹果</li>
+<li><input checked="" disabled="" type="checkbox"> 篮球</li>
+</ul>
+<h2 id="五分割线画法">五、分割线画法</h2>
+<p><strong>语法：</strong></p>
+<p><code>---</code></p>
+<p><strong>效果：</strong></p>
+<hr>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/maven/" data-toggle="tooltip" data-placement="top" title="Maven入门">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/" data-toggle="tooltip" data-placement="top" title="KMP算法实现">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                 
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/spring' title="spring">
+                            spring
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E5%89%8D%E7%AB%AF' title="前端">
+                            前端
+                        </a>
+                        
+                        
+                        
+                        <a href='/tags/%E5%90%8E%E7%AB%AF' title="后端">
+                            后端
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E7%94%9F%E6%B4%BB' title="生活">
+                            生活
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B' title="网络编程">
+                            网络编程
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:this.jibuzixin@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    <li>
+                        <a target="_blank" href="/img/%e5%be%ae%e4%bf%a1%e6%89%ab%e7%a0%81.png">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/jibuzixin">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; 腹有诗书气自华 2023
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>

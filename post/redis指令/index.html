@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="腹有诗书气自华">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="img/小黑.png">
+    <meta property="twitter:image" content="img/小黑.png" />
+    
+
+    
+    <meta name="title" content="redis指令" />
+    <meta property="og:title" content="redis指令" />
+    <meta property="twitter:title" content="redis指令" />
+    
+
+    
+    <meta name="description" content="只是对指令记录了一下，没有太详细的讲解，只能偶尔看看复习复习">
+    <meta property="og:description" content="只是对指令记录了一下，没有太详细的讲解，只能偶尔看看复习复习" />
+    <meta property="twitter:description" content="只是对指令记录了一下，没有太详细的讲解，只能偶尔看看复习复习" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="赵化冰, zhaohuabing, Zhaohuabing, , 赵化冰的网络日志, 赵化冰的博客, Zhaohuabing Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>redis指令 | yzy的博客</title>
+
+    <link rel="canonical" href="/post/redis%E6%8C%87%E4%BB%A4/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.1/css/all.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">腹有诗书气自华</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">所有文章</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/c/c&#43;&#43;">c/c&#43;&#43;</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/java">java</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E5%90%8E%E7%AB%AF">后端</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E7%94%9F%E6%B4%BB">生活</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/notes/">编程历程</a></li>
+                    
+                        <li><a href="/about/">关于我</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/%e5%b0%8f%e9%bb%91.png')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/redis" title="redis">
+                            redis
+                        </a>
+                        
+                        <a class="tag" href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6" title="中间件">
+                            中间件
+                        </a>
+                        
+                    </div>
+                    <h1>redis指令</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                忌不自信
+                             
+                            on 
+                            Monday, January 1, 0001
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <blockquote>
+<p>==注意：==</p>
+<p>对于<strong>redis</strong>存储的同一个区域，所有类型的<strong>key</strong>存储在一起，不能重复，在获取的时候使用对应类型的方法获取</p>
+<p>数值类型不能超过<strong>MAX_LONG</strong></p>
+</blockquote>
+<h1 id="一string类型">一、String类型</h1>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>set key value</code></td>
+<td>设置一个string key</td>
+</tr>
+<tr>
+<td><code>get key</code></td>
+<td>获取key值</td>
+</tr>
+<tr>
+<td><code>del key</code></td>
+<td>删除对应的key值</td>
+</tr>
+<tr>
+<td><code>mset key1 value1 key2 value...</code></td>
+<td>设置多个键值对</td>
+</tr>
+<tr>
+<td><code>mget key1 key2</code></td>
+<td>获取多个值</td>
+</tr>
+<tr>
+<td><code>strlen key</code></td>
+<td>获取值的长度</td>
+</tr>
+<tr>
+<td><code>append key</code></td>
+<td>追加到原始值后面，如果不存在就新建</td>
+</tr>
+</tbody>
+</table>
+<h2 id="string类型的扩展操作">string类型的扩展操作</h2>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>incr key</code></td>
+<td>对于数值+1</td>
+</tr>
+<tr>
+<td><code>incrby key incrment</code></td>
+<td>增加<code>incrment</code>值</td>
+</tr>
+<tr>
+<td><code>incrbyfloat key incrment</code></td>
+<td>增加指定的小数</td>
+</tr>
+<tr>
+<td><code>decr</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>decrby</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="设置指定的生命周期">设置指定的生命周期</h2>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setex key seconds value</code></td>
+<td>设置指定的生存秒数</td>
+</tr>
+<tr>
+<td><code>psetex key milliseconds value</code></td>
+<td>毫秒数</td>
+</tr>
+</tbody>
+</table>
+<h1 id="二hash">二、hash</h1>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hset key field value</code></td>
+<td>设置值</td>
+</tr>
+<tr>
+<td><code>hget key field</code></td>
+<td>获取值</td>
+</tr>
+<tr>
+<td><code>hgetall key</code></td>
+<td>获取该key的所有field与value</td>
+</tr>
+<tr>
+<td><code>hdel key field1 [field2...]</code></td>
+<td>删除</td>
+</tr>
+<tr>
+<td><code>hmset key field1 value1 field2 value2</code></td>
+<td>添加多个值</td>
+</tr>
+<tr>
+<td><code>hmget key field1 field2</code></td>
+<td>获取</td>
+</tr>
+<tr>
+<td><code>hlen key</code></td>
+<td>获取字段数量</td>
+</tr>
+<tr>
+<td><code>hexists key field</code></td>
+<td>看是否存在字段</td>
+</tr>
+</tbody>
+</table>
+<h2 id="hash扩展操作">hash扩展操作</h2>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hkeys</code></td>
+<td>获取keys</td>
+</tr>
+<tr>
+<td><code>hvals</code></td>
+<td>获取value</td>
+</tr>
+<tr>
+<td><code>hincrby key field incrment</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>hincrbyfloat key field incrment</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="三list">三、list</h1>
+<blockquote>
+<p>list是双向链表</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lpush key value1 value2...</code></td>
+<td>左添加</td>
+</tr>
+<tr>
+<td><code>rpush key value1 value2...</code></td>
+<td>右添加</td>
+</tr>
+<tr>
+<td><code>lrange key start stop</code></td>
+<td>获取范围内的数据</td>
+</tr>
+<tr>
+<td><code>lindex key index</code></td>
+<td>索引</td>
+</tr>
+<tr>
+<td><code>llen key</code></td>
+<td>长度</td>
+</tr>
+<tr>
+<td><code>lpop</code></td>
+<td>获取并移除</td>
+</tr>
+<tr>
+<td><code>rpop</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>blpop key [key2] timeout</code></td>
+<td>没值等timeout，有直接pop</td>
+</tr>
+<tr>
+<td><code>brpop key [key2] timeout</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="四set">四、set</h1>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sadd key member1 [member2]</code></td>
+<td>添加</td>
+</tr>
+<tr>
+<td><code>smembers key</code></td>
+<td>获取全部数据</td>
+</tr>
+<tr>
+<td><code>srem key member1 member2 ...</code></td>
+<td>删除</td>
+</tr>
+<tr>
+<td><code>scard key</code></td>
+<td>获取集合数据总量</td>
+</tr>
+<tr>
+<td><code>sismember key member</code></td>
+<td>判断是否存在</td>
+</tr>
+<tr>
+<td><code>srandmember key [count]</code></td>
+<td>随机获取集合的数据</td>
+</tr>
+<tr>
+<td><code>spop key</code></td>
+<td>随机获取某个并移除</td>
+</tr>
+</tbody>
+</table>
+<h2 id="set扩展操作">set扩展操作</h2>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sinter key1 [key2]</code></td>
+<td>交</td>
+</tr>
+<tr>
+<td><code>sunion key1 [key2]</code></td>
+<td>并</td>
+</tr>
+<tr>
+<td><code>sdiff key1 [key2]</code></td>
+<td>差</td>
+</tr>
+<tr>
+<td><code>sinterstore destination key1 [key2]</code></td>
+<td>求交并存储到目标</td>
+</tr>
+<tr>
+<td><code>smove source destination member</code></td>
+<td>从原始集合中移动到目标集合</td>
+</tr>
+</tbody>
+</table>
+<h1 id="五sorted_set">五、sorted_set</h1>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>zadd key scorel member1...</code></td>
+<td>添加一个或多个数据</td>
+</tr>
+<tr>
+<td><code>zrange key start stop</code></td>
+<td>获取全部数据从小到大</td>
+</tr>
+<tr>
+<td><code>zrevrange key start stop</code></td>
+<td>从大到小</td>
+</tr>
+<tr>
+<td><code>zrem key member</code></td>
+<td>删除数据</td>
+</tr>
+<tr>
+<td><code>zrangebyscore key min max</code></td>
+<td>获取值</td>
+</tr>
+<tr>
+<td><code>zrevrangebyscore key max min</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>zremrangebyrank key start stop</code></td>
+<td>删除值</td>
+</tr>
+<tr>
+<td><code>zremrangebyscore key min max</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>zcard key</code></td>
+<td>获取集合数量</td>
+</tr>
+<tr>
+<td><code>zcount key min max</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>zinterstore destination numkeys key ...</code></td>
+<td>numkeys个集合交并操作</td>
+</tr>
+<tr>
+<td><code>zunionstore destination numkeys key ...</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>zrank key member</code></td>
+<td>获取数据对应的索引（排名）</td>
+</tr>
+<tr>
+<td><code>zrevrank key member</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>zscore key member</code></td>
+<td>获取score值</td>
+</tr>
+<tr>
+<td><code>zincrby key increment member</code></td>
+<td>修改</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>==注意：==</p>
+<p>sorted_set在进行集合的交并操作的时候还可以对score的一系列数值进行操作</p>
+</blockquote>
+<h1 id="六通用操作">六、通用操作</h1>
+<h2 id="key的操作">key的操作</h2>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>del key</code></td>
+<td>删除</td>
+</tr>
+<tr>
+<td><code>exists key</code></td>
+<td>是否存在</td>
+</tr>
+<tr>
+<td><code>type key</code></td>
+<td>获取key类型</td>
+</tr>
+<tr>
+<td><code>keys pattern</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="key设置有效期">key设置有效期</h2>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>expire key seconds</code></td>
+<td>设置有效期</td>
+</tr>
+<tr>
+<td><code>pexpire key milliseconds</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>expireat key timestamp</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>pexpireat key milliseconds-timestamp</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ttl key</code></td>
+<td>获取有效期</td>
+</tr>
+<tr>
+<td><code>pttl key</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>persist key</code></td>
+<td>设置为永久有效</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>==注意：==</p>
+<p>ttl获取有效期的时候，如果key存在返回-1；如果key不存在返回-2；如果key在有效期返回有效期时间</p>
+</blockquote>
+<h2 id="key的其他操作">key的其他操作</h2>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rename key newkey</code></td>
+<td>会覆盖已存在名的值</td>
+</tr>
+<tr>
+<td><code>renamenx key newkey</code></td>
+<td>如果改名不存在改名成功</td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td>排序的集合需要有数据且不改变原数据</td>
+</tr>
+<tr>
+<td><code>help @generic</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="数据库通用操作">数据库通用操作</h2>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>select num</code></td>
+<td>选择数据库</td>
+</tr>
+<tr>
+<td><code>move key db</code></td>
+<td>移动数据到指定数据库</td>
+</tr>
+<tr>
+<td><code>dbsize</code></td>
+<td>看数据库有多少key</td>
+</tr>
+<tr>
+<td><code>flushdb</code></td>
+<td>清理当前数据库的key</td>
+</tr>
+<tr>
+<td><code>flushall</code></td>
+<td><strong>有生之年不用</strong></td>
+</tr>
+</tbody>
+</table>
+<h1 id="七持久化技术">七、持久化技术</h1>
+<h2 id="rdb">rdb</h2>
+<ul>
+<li>dbfilename dump.rdb
+<ul>
+<li>说明：设置本地数据库文件名，默认值为 dump.rdlb</li>
+<li>经验：通常设置为dump-端口号.rdb</li>
+</ul>
+</li>
+<li>dir
+<ul>
+<li>说明：设置存储.rdb文件的路径</li>
+<li>经验：通常设置成存储空间较大的目录中，目录名称data</li>
+</ul>
+</li>
+<li>rdbcompression yes
+<ul>
+<li>说明：设置存储至本地数据库时是否压缩数据，默认为yes，采用LZF压缩</li>
+<li>经验：通常默认为开启状态，如果设置为no，可以节省 CPU 运行时间，但会使存储的文件变大（巨大）</li>
+</ul>
+</li>
+<li>rdbchecksum yes
+<ul>
+<li>说明：设置是否进行RDB文件格式校验，该校验过程在写文件和读文件过程均进行</li>
+<li>经验：通常默认为开启状态，如果设置为no，可以节约读写性过程约10%时间消耗，但是存储一定的数据损坏风险</li>
+</ul>
+</li>
+<li>bgsave
+<ul>
+<li>后台执行，但不是立即执行</li>
+</ul>
+</li>
+<li>save seconds changes
+<ul>
+<li>seconds时间内改变了changes就开始存储</li>
+</ul>
+</li>
+</ul>
+<h2 id="rdb特殊启动形式">rdb特殊启动形式</h2>
+<ul>
+<li>
+<p>服务器运行过程中重启</p>
+<ul>
+<li>debug reload</li>
+</ul>
+</li>
+<li>
+<p>关闭服务器时指定保存数据</p>
+<ul>
+<li>shutdow save</li>
+</ul>
+</li>
+</ul>
+<h2 id="aof">aof</h2>
+<h3 id="aof写数据三种策略appendfsync">AOF写数据三种策略(appendfsync)</h3>
+<ul>
+<li>always(每次）
+每次写入操作均同步到AOF文件中，数据零误差，性能较低</li>
+<li>everysec（每秒）
+每秒将缓冲区中的指令同步到AOF文件中，数据准确性较高，性能较高
+在系统突然宕机的情况下丢失1秒内的数据</li>
+<li>no（系统控制）
+由操作系统控制每次同步到AOF文件的周期，整体过程不可控</li>
+</ul>
+<h3 id="aof功能开启">AOF功能开启</h3>
+<ul>
+<li>配置
+<ul>
+<li>appendonly yes l no</li>
+<li>作用
+是否开启AOF持久化功能，默认为不开启状态</li>
+</ul>
+</li>
+<li>配置
+<ul>
+<li>appendfsyne always l everysec l no</li>
+<li>作用
+AOF写数据策略</li>
+</ul>
+</li>
+</ul>
+<h3 id="aof重写方式">AOF重写方式</h3>
+<ul>
+<li>
+<p>手动重写
+bgrewriteaof</p>
+</li>
+<li>
+<p>自动重写</p>
+<ul>
+<li>
+<p>auto-aof-rewrite-min-size size</p>
+<p>大于size基础大小就开始重写</p>
+</li>
+<li>
+<p>auto-aof-rewrite-percentage percentage</p>
+<p>大于这个百分比就开始重写</p>
+</li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<h1 id="八事务的基本操作">八、事务的基本操作</h1>
+<ul>
+<li>
+<p>开启事务</p>
+<ul>
+<li>multi
+作用
+设定事务的开启位置，此指令执行后，后续的所有指令均加入到事务中</li>
+</ul>
+</li>
+<li>
+<p>执行事务</p>
+<ul>
+<li>exec
+作用
+设定事务的结束位置，同时执行事务。与multi成对出现，成对使用</li>
+</ul>
+</li>
+<li>
+<p>取消事务</p>
+<ul>
+<li>discard
+作用
+终止当前事务的定义，发生在multi之后，exec之前</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>==注意：==</p>
+<p>如果在一系列的事务之中语句格式错误，整个事务都不能使用。</p>
+<p>如果出现了语句格式没有问题但无法正确执行，那么只有当前语句不能执行，其他的可以正常执行</p>
+</blockquote>
+<h2 id="锁">锁</h2>
+<ul>
+<li>对key 添加监视锁，在执行exec前如果key发生了变化，终止事务执行
+watch key1 [key2..]</li>
+<li>取消对所有 key 的监视
+unwatch</li>
+</ul>
+<blockquote>
+<p>当监视的key发生了变化，所有的事务都不能执行</p>
+</blockquote>
+<h2 id="分布式锁以上锁已经不适用了">分布式锁（以上锁已经不适用了）</h2>
+<ul>
+<li>
+<p>使用 setnx 设置一个公共锁
+setnx lock-key value</p>
+</li>
+<li>
+<p>利用setnx命令的返回值特征，有值则返回设置失败，无值则返回设置成功</p>
+<ul>
+<li>对于返回设置成功的，拥有控制权，进行下一步的具体业务操作</li>
+<li>对于返回设置失败的，不具有控制权，排队或等待</li>
+<li>操作完毕通过del操作释放锁</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>==注意：==</p>
+<p>这个锁只是大家公认商量好的，也就是说即便加了锁，也可以修改对于的key值。</p>
+<p>所以每次在修改之前都需要判断当前key是否加了锁，然后再进行下一步操作。</p>
+<p>对应锁的名称似乎也不是与你要锁的key一一对应的，都是大家提前商量好的，其实就是相当于set了一个键值对，只不过这个键值对只能设置删除，不能修改</p>
+</blockquote>
+<ul>
+<li>使用 expire 为锁key添加时间限定，到时不释放，放弃锁
+<ul>
+<li>expire lock-key second</li>
+<li>pexpire lock-key milliseconds</li>
+</ul>
+</li>
+</ul>
+<h1 id="九删除策略">九、删除策略</h1>
+<h2 id="惰性删除">惰性删除</h2>
+<ul>
+<li>数据到达过期时间，不做处理。等下次访问该数据时
+<ul>
+<li>如果未过期，返回数据</li>
+<li>发现已过期，删除，返回不存在</li>
+</ul>
+</li>
+<li>优点：节约CPU性能，发现必须删除的时候才删除</li>
+<li>缺点：内存压力很大，出现长期占用内存的数据</li>
+</ul>
+<h2 id="定期删除">定期删除</h2>
+<p>
+  <img src="/Users/jibuzixin/Documents/typora/img/image-20221026095408132.png" alt="image-20221026095408132">
+
+</p>
+<h2 id="逐出算法">逐出算法</h2>
+<h3 id="相关配置">相关配置</h3>
+<ul>
+<li>最大可使用内存
+<ul>
+<li>maxmemory
+占用物理内存的比例，默认值为0，表示不限制。生产环境中根据需求设定，通常设置在50%以上。</li>
+</ul>
+</li>
+<li>每次选取待删除数据的个数
+<ul>
+<li>maxmemory-samples
+选取数据时并不会全库扫描，导致严重的性能消耗，降低读写性能。因此采用随机获取数据的方式作为待检测删除数据</li>
+</ul>
+</li>
+<li>删除策略
+<ul>
+<li>maxmemory-policy
+达到最大内存后的，对被挑选出来的数据进行删除的策略</li>
+<li>检测易失数据（可能会过期的数据集server.db[i].expires）
+<ul>
+<li>volatile-lru：挑选最近最少使用的数据淘汰</li>
+<li>volatile-lfu：挑选最近使用次数最少的数据淘汰</li>
+<li>volatile-ttl：挑选将要过期的数据淘汰</li>
+<li>volatile-random：任意选择数据淘汰</li>
+</ul>
+</li>
+<li>检测全库数据（所有数据集server.db[i].dict)
+<ul>
+<li>allkeys-lru：挑选最近最少使用的数据淘汰</li>
+<li>allkeys-lfu：挑选最近使用次数最少的数据淘汰</li>
+<li>allkeys-random：任意选择数据淘汰</li>
+</ul>
+</li>
+<li>放弃数据驱逐
+<ul>
+<li>no-enviction(驱逐）：禁止驱逐数据(redis4.0中默认策略），会引发错误OOM (Out Of Memory)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="十高级数据类型">十、高级数据类型</h1>
+<h2 id="bitmaps类型的基础操作">Bitmaps类型的基础操作</h2>
+<ul>
+<li>
+<p>获取指定key对应偏移量上的bit值</p>
+<ul>
+<li>getbit key offset</li>
+</ul>
+</li>
+<li>
+<p>设置指定key对应偏移量上的bit值，value只能是1或0</p>
+<ul>
+<li>setbit key offset value</li>
+</ul>
+</li>
+<li>
+<p>对指定key按位进行交、并、非、异或操作，并将结果保存到destkey中</p>
+<ul>
+<li>bitop Op destKey key1 [key2. . . ]
+<ul>
+<li>and：交</li>
+<li>or：并</li>
+<li>not:非</li>
+<li>xor：异或</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>统计指定key中1的数量</p>
+<ul>
+<li>bitcount key [start end]</li>
+</ul>
+</li>
+</ul>
+<h2 id="hyperloglog类型的基本操作">HyperLogLog类型的基本操作</h2>
+<ul>
+<li>添加数据
+pfadd key element [element &hellip;]</li>
+<li>統计数据
+pfcount key [key &hellip;]</li>
+<li>合并数据
+pfmerge destkey sourcekey [sourcekey. ..]</li>
+</ul>
+<p>==相关说明==</p>
+<ul>
+<li>用于进行基数统计，不是集合，不保存数据，只记录数量而不是具体数据</li>
+<li>核心是基数估算算法，最终数值存在一定误差</li>
+<li>误差范围：基数估计的结果是一个带有0.81%标准错误的近似值</li>
+<li>耗空间极小，每个hyperloglog key占用了12K的内存用于标记基数</li>
+<li>pfadd命令不是一次性分配12K内存使用，会随着基数的增加內存逐渐增大</li>
+<li>Pfmerge命令合井后占用的存储空间为12K，无论合并之前数据量多少</li>
+</ul>
+<h2 id="geo">GEO</h2>
+<ul>
+<li>
+<p>添加坐标点
+geoadd key longitude latitude member [longitude latitude member&hellip;]</p>
+</li>
+<li>
+<p>获取坐标点
+geopos key member [member &hellip;]</p>
+</li>
+<li>
+<p>计算坐标点距离
+geodist key member1 [member2 funit]</p>
+</li>
+<li>
+<p>根据坐标求范围内的数据
+georadius key longitude latitude radius m\ km\ ft \ mi</p>
+</li>
+<li>
+<p>根据点求范国内数据
+georadiusbymember key member radius m\ km\ ft \ mi</p>
+</li>
+<li>
+<p>获取指定点对应的坐标hash值
+geohash key member [member &hellip; ]</p>
+</li>
+</ul>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/servelet/" data-toggle="tooltip" data-placement="top" title="Servelet">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/maven/" data-toggle="tooltip" data-placement="top" title="Maven入门">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                 
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/spring' title="spring">
+                            spring
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E5%89%8D%E7%AB%AF' title="前端">
+                            前端
+                        </a>
+                        
+                        
+                        
+                        <a href='/tags/%E5%90%8E%E7%AB%AF' title="后端">
+                            后端
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E7%94%9F%E6%B4%BB' title="生活">
+                            生活
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B' title="网络编程">
+                            网络编程
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:this.jibuzixin@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    <li>
+                        <a target="_blank" href="/img/%e5%be%ae%e4%bf%a1%e6%89%ab%e7%a0%81.png">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/jibuzixin">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; 腹有诗书气自华 2023
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>

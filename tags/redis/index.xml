@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>redis on 腹有诗书气自华</title>
+    <link>https://jibuzixin.github.io/tags/redis/</link>
+    <description>Recent content in redis on 腹有诗书气自华</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://jibuzixin.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>redis指令</title>
+      <link>https://jibuzixin.github.io/post/redis%E6%8C%87%E4%BB%A4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/redis%E6%8C%87%E4%BB%A4/</guid>
+      <description>==注意：== 对于redis存储的同一个区域，所有类型的key存储在一起，不能重复，在获取的时候使用对应类型的方法获取 数值类型不能超过MAX</description>
+    </item>
+    
+  </channel>
+</rss>

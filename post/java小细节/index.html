@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="腹有诗书气自华">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="img/小黑.png">
+    <meta property="twitter:image" content="img/小黑.png" />
+    
+
+    
+    <meta name="title" content="java小细节" />
+    <meta property="og:title" content="java小细节" />
+    <meta property="twitter:title" content="java小细节" />
+    
+
+    
+    <meta name="description" content="第三遍看《java核心技术卷1》的小总结笔记">
+    <meta property="og:description" content="第三遍看《java核心技术卷1》的小总结笔记" />
+    <meta property="twitter:description" content="第三遍看《java核心技术卷1》的小总结笔记" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="赵化冰, zhaohuabing, Zhaohuabing, , 赵化冰的网络日志, 赵化冰的博客, Zhaohuabing Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>java小细节 | yzy的博客</title>
+
+    <link rel="canonical" href="/post/java%E5%B0%8F%E7%BB%86%E8%8A%82/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.1/css/all.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">腹有诗书气自华</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">所有文章</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/c/c&#43;&#43;">c/c&#43;&#43;</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/java">java</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E5%90%8E%E7%AB%AF">后端</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E7%94%9F%E6%B4%BB">生活</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/notes/">编程历程</a></li>
+                    
+                        <li><a href="/about/">关于我</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/%e5%b0%8f%e9%bb%91.png')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/java%E5%9F%BA%E7%A1%80" title="java基础">
+                            java基础
+                        </a>
+                        
+                    </div>
+                    <h1>java小细节</h1>
+                    <h2 class="subheading">依据《java核心技术卷1》</h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                忌不自信
+                             
+                            on 
+                            Monday, January 1, 0001
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <h1 id="java小细节">java小细节</h1>
+<ul>
+<li>从java7开始加上前缀<code>0b</code>可以写二进制数</li>
+<li>从java7开始数字可以用<code>1_000_000</code>表示，为了方便人阅读</li>
+<li>没有后缀的浮点数默认是<code>double</code>类型</li>
+<li>十六进制表示法中<code>p</code>表示指数，指数的基数是<code>2</code></li>
+<li><code>\u</code>转义字符需要注意</li>
+</ul>
+<h1 id="声明变量">声明变量</h1>
+<ul>
+<li>对大小写敏感</li>
+<li><code>&gt;&gt;&gt;</code>会用<code>0</code>填充高位，<code>&gt;&gt;</code>会用符号位填充高位，不存在<code>&lt;&lt;&lt;</code></li>
+</ul>
+<h1 id="final">final</h1>
+<ul>
+<li>
+<p>定义常量</p>
+</li>
+<li>
+<p>不让继承子类</p>
+</li>
+<li>
+<p>不允许子类重写方法</p>
+</li>
+<li>
+<p>如果一个类被声明为<code>final</code>其方法自动为<code>final</code>，而字段不会</p>
+</li>
+<li>
+<p><code>&lt; &gt;</code>尖括号里面不能有基本类型</p>
+</li>
+<li>
+<p>可以利用方法调用初始化一个字段</p>
+</li>
+<li>
+<p>自动装箱的变量不适合用<code>==</code>进行比较，应该使用<code>equals</code></p>
+</li>
+</ul>
+<h1 id="接口">接口</h1>
+<ul>
+<li>接口中的方法都自动为<code>public</code>，在实现类中要声明<code>public</code></li>
+<li>接口没有实例字段,接口字段总是<code>public static final</code></li>
+<li>接口中可以有实现的方法，可以有静态方法</li>
+<li><code>default</code>默认方法，更好的兼容性</li>
+<li><code>cloneable</code>是一个<strong>标记接口</strong>，不含有任何方法，只是起到一个标记的作用。允许使用<code>instanceof</code>来检查</li>
+</ul>
+<h1 id="lambda表达式">lambda表达式</h1>
+<ul>
+<li>（String first, String second) -&gt; first.length() - second.length();</li>
+<li>如果可以推导出参数等类型，可以不用写</li>
+<li>如果执行代码不止一行，可以使用<code>{}</code>来括起来</li>
+<li>如果没有参数，使用空括号</li>
+</ul>
+<h1 id="方法引用">方法引用</h1>
+<ul>
+<li>Object::instanceMethod</li>
+<li>Class::instanceMethod</li>
+<li>Class::staticMethod</li>
+</ul>
+<ol>
+<li>第一种情况，System.out.println，System.out是对象，调用System.out.println(x)</li>
+<li>第二种情况，第一个参数会成为方法的隐式参数，例如String::compareToIgnoreCase，调用(x, y) -&gt; x.compareToIgnoreCase(y);</li>
+<li>第三种情况就是静态方法</li>
+</ol>
+<ul>
+<li>this::instanceMethod 与 super::instanceMethod一样可以使用</li>
+</ul>
+<h2 id="构造器引用">构造器引用</h2>
+<ul>
+<li>Class::new</li>
+</ul>
+<h2 id="lambda表达式的三个部分">lambda表达式的三个部分</h2>
+<ol>
+<li>代码块</li>
+<li>参数变量</li>
+<li>自由变量，非参数值（表达式中不能改变自由变量的值，只是引用；外部自由变量的改变也是不行的)。lambda表达式可以访问代码块以外的变量。lambda捕获的变量必须是事实的最终变量。同样的，lambda表达式中的<code>this</code>变量是指调用表达式的这个类的</li>
+</ol>
+<h2 id="常用的函数接口">常用的函数接口</h2>
+<p>
+  <img src="/Users/jibuzixin/Documents/typora/img/image-20220917103249816.png" alt="image-20220917103249816">
+
+</p>
+<h1 id="内部类">内部类</h1>
+<ul>
+<li>只有内部类才可以是私有的</li>
+<li>==提醒：==剩下的不常用以后有时间再看看</li>
+</ul>
+<h1 id="代理">代理</h1>
+<h1 id="断言">断言</h1>
+<h1 id="日志">日志</h1>
+<h2 id="级别">级别</h2>
+<ul>
+<li>SEVERE</li>
+<li>WARNING</li>
+<li>INFO</li>
+<li>CONFIG</li>
+<li>FINE</li>
+<li>FINER</li>
+<li>FINEST</li>
+</ul>
+<blockquote>
+<p>一般情况下，实际使用的是前三个级别</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#6272a4">//获取日志记录器
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd;font-style:italic">final</span> Logger myLogger <span style="color:#ff79c6">=</span>  Logger<span style="color:#ff79c6">.</span><span style="color:#50fa7b">getLogger</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;com.mycompany.myapp&#34;</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">//设置级别，现在FINE之前的都会被记录下来
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">//可以使用 Level.ALL Level.OFF打开和关闭所有
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>logger<span style="color:#ff79c6">.</span><span style="color:#50fa7b">setLevel</span><span style="color:#ff79c6">(</span>Level<span style="color:#ff79c6">.</span><span style="color:#50fa7b">FINE</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">//记录方法
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>logger<span style="color:#ff79c6">.</span><span style="color:#50fa7b">warning</span><span style="color:#ff79c6">(</span>message<span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span>logger<span style="color:#ff79c6">.</span><span style="color:#50fa7b">fine</span><span style="color:#ff79c6">(</span>message<span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">//也可以指定级别
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>logger<span style="color:#ff79c6">.</span><span style="color:#50fa7b">log</span><span style="color:#ff79c6">(</span>Level<span style="color:#ff79c6">.</span><span style="color:#50fa7b">FINE</span><span style="color:#ff79c6">,</span> message<span style="color:#ff79c6">);</span>
+</span></span></code></pre></div><h1 id="泛型">泛型</h1>
+<ul>
+<li><strong>类型变量</strong> 放在修饰符的后面，返回类型的前面</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#ff79c6">&lt;</span>T<span style="color:#ff79c6">&gt;</span> T <span style="color:#50fa7b">method</span><span style="color:#ff79c6">();</span>
+</span></span></code></pre></div><ul>
+<li>当调用一个方法的时候，可以把具体类型放在方法名前面</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String s <span style="color:#ff79c6">=</span> Array<span style="color:#ff79c6">.&lt;</span>String<span style="color:#ff79c6">&gt;</span>getMethod<span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;String&#34;</span><span style="color:#ff79c6">);</span>
+</span></span></code></pre></div><h2 id="方法限定">方法限定</h2>
+<ul>
+<li>当需要一个包含一个方法compareTo的标准接口</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#ff79c6">&lt;</span>T <span style="color:#8be9fd;font-style:italic">extends</span> Comparable<span style="color:#ff79c6">&gt;</span> T <span style="color:#50fa7b">min</span><span style="color:#ff79c6">(</span>T<span style="color:#ff79c6">[]</span> a<span style="color:#ff79c6">);</span>
+</span></span></code></pre></div><blockquote>
+<p><code>extends</code>表示一个子类型的概念</p>
+</blockquote>
+<ul>
+<li>一个类型变量或者通配符可以有多个限定
+<ul>
+<li>限定类型用<code>&amp;</code>分隔，而<code>,</code>用来分隔类型变量</li>
+</ul>
+</li>
+<li>最多可以限定一个类，且要放到最前面</li>
+</ul>
+<blockquote>
+<p><strong>类型擦除的问题</strong></p>
+<p>原始类型用第一个限定来替换类型变量，如果没有限定类型，就替换成<code>Object</code></p>
+</blockquote>
+<ul>
+<li>由此可能会产生类型擦除与多态之间产生冲突，所以，编译器会产生一个<strong>桥方法</strong></li>
+</ul>
+<blockquote>
+<p>直观的讲， 带有<strong>超类型限定</strong> 的通配符允许你写入一个泛型对象，而带有<strong>子类型限定</strong> 的通配符允许你读取一个泛型对象</p>
+</blockquote>
+<p>==注意：==</p>
+<p>在<strong>java代码</strong> 中，根据参数类型的特征（签名）来判断一个方法，但在<strong>虚拟机</strong> 中会根据参数类型和返回值共同决定一个方法</p>
+<ul>
+<li>在虚拟机中没有泛型，只有普通的类和方法</li>
+<li>会合成桥方法来保持多态</li>
+<li>所有方法类型都会替换成他们的限定类型</li>
+<li>为了保持安全性，必要时会强制类型转换</li>
+</ul>
+<h2 id="局限性和限制">局限性和限制</h2>
+<ul>
+<li>不能用基本类型实例化类型参数</li>
+<li>运行时类型查询只适用于原始类型</li>
+<li>不能创建参数化类型的数组</li>
+<li>不能实例化类型变量</li>
+<li>泛型类的静态上下文中类型变量无效</li>
+<li>不能抛出或捕获泛型类的实例</li>
+</ul>
+<h2 id="无限定通配符">无限定通配符</h2>
+<ul>
+<li>例如：<code>Pair&lt;?&gt;</code>与<code>Pair</code>似乎一样，但<code>Pair&lt;?&gt;</code>有以下方法：
+<ul>
+<li><code>? getFirst()</code></li>
+<li><code>void set First(?)</code></li>
+<li><code>getFirst</code>只能赋值给一个<code>Object</code>对象，<code>setFirst</code>不能被调用</li>
+</ul>
+</li>
+<li>编译器必须能够保证通配符表示单个确定类型，例如：
+<ul>
+<li><code>ArrayList&lt;Pair&lt;T&gt;&gt;</code>中的<code>T</code>永远不能捕获<code>ArrayList&lt;Pair&lt;?&gt;&gt;</code>中的通配符</li>
+</ul>
+</li>
+</ul>
+<h1 id="集合">集合</h1>
+<ul>
+<li>java的迭代器可以理解为：当调用<code>next</code>之后迭代器就越过下一个元素，并返回刚刚越过的元素引用。处于两个元素之间</li>
+</ul>
+<!-- raw HTML omitted -->
+<p>
+  <img src="/Users/jibuzixin/Documents/typora/img/image-20220924122744808.png" alt="image-20220924122744808">
+
+</p>
+<ul>
+<li>
+<p><code>collection</code>对于<code>iterator</code>和<code>Listinterator</code>有不一样的操作方法，</p>
+<p>后者更多一些，包括有</p>
+<ul>
+<li><code>hasprevious</code></li>
+<li><code>previous</code>这两个都是反向输出链表</li>
+<li><code>next/hasnext</code>iterator该有的它也有</li>
+<li><code>set(newValue)</code>这个用新值替代刚刚返回的值</li>
+<li><code>add(value)</code>这个在迭代器前添加一个元素</li>
+</ul>
+</li>
+</ul>
+<h2 id="集hashestreeset">集，hashes/treeset</h2>
+<ul>
+<li><code>hashset</code>没有重复的元素，初始化可以设置<strong>桶</strong>的数目，也可以设置<strong>装填因子</strong>
+<ul>
+<li>分别表示每个相同的散列值一共可以装多少</li>
+<li>整个表中装填的百分比</li>
+</ul>
+</li>
+<li><code>treeset</code>平衡二叉树</li>
+</ul>
+<h2 id="队列">队列</h2>
+<ul>
+<li>
+<p><code>deque</code>双端队列</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        ArrayDeque<span style="color:#ff79c6">&lt;</span>Integer<span style="color:#ff79c6">&gt;</span> integers <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> ArrayDeque<span style="color:#ff79c6">&lt;&gt;();</span>
+</span></span><span style="display:flex;"><span>        integers<span style="color:#ff79c6">.</span><span style="color:#50fa7b">offer</span><span style="color:#ff79c6">(</span><span style="color:#bd93f9">1</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span>        integers<span style="color:#ff79c6">.</span><span style="color:#50fa7b">offer</span><span style="color:#ff79c6">(</span><span style="color:#bd93f9">2</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span>        integers<span style="color:#ff79c6">.</span><span style="color:#50fa7b">offer</span><span style="color:#ff79c6">(</span><span style="color:#bd93f9">3</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span>        integers<span style="color:#ff79c6">.</span><span style="color:#50fa7b">offer</span><span style="color:#ff79c6">(</span><span style="color:#bd93f9">4</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        integers<span style="color:#ff79c6">.</span><span style="color:#50fa7b">offerLast</span><span style="color:#ff79c6">(</span><span style="color:#bd93f9">1</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span>        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span>integers <span style="color:#ff79c6">+</span> integers<span style="color:#ff79c6">.</span><span style="color:#50fa7b">peekFirst</span><span style="color:#ff79c6">().</span><span style="color:#50fa7b">toString</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">+</span><span style="color:#f1fa8c">&#34;\n&#34;</span><span style="color:#ff79c6">+</span> integers<span style="color:#ff79c6">.</span><span style="color:#50fa7b">pollLast</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">+</span> integers<span style="color:#ff79c6">);</span>
+</span></span></code></pre></div><p>
+  <img src="../img/image-20220924134517784.png" alt="image-20220924134517784">
+
+</p>
+</li>
+<li>
+<p>优先队列</p>
+<p>
+  <img src="../img/image-20220924134549329.png" alt="image-20220924134549329">
+
+</p>
+</li>
+</ul>
+<h2 id="map集合hashmaptreemap">map集合、hashmap/treemap</h2>
+<ul>
+<li>与hashset/treeset类似
+<ul>
+<li>map对键进行<code>hashcode</code>和放置，和值无关</li>
+</ul>
+</li>
+</ul>
+<p>
+  <img src="../img/image-20220924140509729.png" alt="image-20220924140509729">
+
+</p>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/" data-toggle="tooltip" data-placement="top" title="KMP算法实现">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/js/" data-toggle="tooltip" data-placement="top" title="JavaScript">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                 
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/spring' title="spring">
+                            spring
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E5%89%8D%E7%AB%AF' title="前端">
+                            前端
+                        </a>
+                        
+                        
+                        
+                        <a href='/tags/%E5%90%8E%E7%AB%AF' title="后端">
+                            后端
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E7%94%9F%E6%B4%BB' title="生活">
+                            生活
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B' title="网络编程">
+                            网络编程
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:this.jibuzixin@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    <li>
+                        <a target="_blank" href="/img/%e5%be%ae%e4%bf%a1%e6%89%ab%e7%a0%81.png">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/jibuzixin">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; 腹有诗书气自华 2023
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>

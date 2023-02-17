@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>c&#43;&#43; on 腹有诗书气自华</title>
+    <link>https://jibuzixin.github.io/tags/c&#43;&#43;/</link>
+    <description>Recent content in c&#43;&#43; on 腹有诗书气自华</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://jibuzixin.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>KMP算法实现</title>
+      <link>https://jibuzixin.github.io/post/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</guid>
+      <description>KMP算法实现 视频链接： 【最浅显易懂的 KMP 算法讲解】 kmp算法就是为了在比较字符不相等的时候可以回溯到合适的位置，而不像普通比较字符串的方法一</description>
+    </item>
+    
+  </channel>
+</rss>
