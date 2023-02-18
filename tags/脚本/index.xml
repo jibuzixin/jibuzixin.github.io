@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>脚本 on 腹有诗书气自华</title>
+    <link>https://jibuzixin.github.io/tags/%E8%84%9A%E6%9C%AC/</link>
+    <description>Recent content in 脚本 on 腹有诗书气自华</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 02 Nov 2022 16:10:33 +0000</lastBuildDate><atom:link href="https://jibuzixin.github.io/tags/%E8%84%9A%E6%9C%AC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>体温自动打卡脚本</title>
+      <link>https://jibuzixin.github.io/post/%E8%87%AA%E5%8A%A8%E4%BD%93%E6%B8%A9%E6%89%93%E5%8D%A1/</link>
+      <pubDate>Wed, 02 Nov 2022 16:10:33 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/%E8%87%AA%E5%8A%A8%E4%BD%93%E6%B8%A9%E6%89%93%E5%8D%A1/</guid>
+      <description>通过手机抓包软件抓包，然后看一下是哪个请求去查信息，打卡的，怎么打的，然后用python模拟发送请求就行了，都没加密，一下子就搞定了。 下面就</description>
+    </item>
+    
+    <item>
+      <title>linuxShell脚本无法运行</title>
+      <link>https://jibuzixin.github.io/post/linuxshell%E8%84%9A%E6%9C%AC%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C/</link>
+      <pubDate>Wed, 02 Nov 2022 13:04:01 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/linuxshell%E8%84%9A%E6%9C%AC%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C/</guid>
+      <description>看了那么多就这个有用，其他的网上有资源你们可以找找 参考链接 原文 一、问题描述 定时任务在命令行直接执行可以正确执行，但是加入定时任务之后没有执行</description>
+    </item>
+    
+  </channel>
+</rss>

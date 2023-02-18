@@ -5,41 +5,42 @@
     <link>https://jibuzixin.github.io/tags/%E5%90%8E%E7%AB%AF/</link>
     <description>Recent content in 后端 on 腹有诗书气自华</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://jibuzixin.github.io/tags/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Wed, 02 Feb 2022 18:58:00 +0000</lastBuildDate><atom:link href="https://jibuzixin.github.io/tags/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Maven入门</title>
-      <link>https://jibuzixin.github.io/post/maven/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>spring小细节</title>
+      <link>https://jibuzixin.github.io/post/spring%E7%9A%84%E5%B0%8F%E7%BB%86%E8%8A%82/</link>
+      <pubDate>Wed, 02 Feb 2022 18:58:00 +0000</pubDate>
       
-      <guid>https://jibuzixin.github.io/post/maven/</guid>
-      <description>一、Maven 提供了一套标准化的项目结构 提供了一套标准化的构建流程 提供了一套依赖管理机制 二、Maven坐标 2.1 什么是坐标 坐标是==资源的唯一标</description>
-    </item>
-    
-    <item>
-      <title>Servelet</title>
-      <link>https://jibuzixin.github.io/post/servelet/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://jibuzixin.github.io/post/servelet/</guid>
-      <description>一、servelet请求乱码 get方法请求乱码 String fname = request.getParameter(&amp;#34;fname&amp;#34;); //转换为字节数组“ISO-8859-1”编码 byte[] bytes = fname.getBytes(&amp;#34;ISO-8859-1&amp;#34;); //重新编码 fname = new String(bytes, &amp;#34;UTF-8&amp;#34;); post请</description>
+      <guid>https://jibuzixin.github.io/post/spring%E7%9A%84%E5%B0%8F%E7%BB%86%E8%8A%82/</guid>
+      <description>动态sql &amp;lt;if test=&#39;&#39; &amp;gt;if语句 ，直接使用对象的属性就可以访问 &amp;lt;where&amp;gt;动态生成where，可以自动去掉语句前面的and但不可</description>
     </item>
     
     <item>
       <title>spring入门</title>
       <link>https://jibuzixin.github.io/post/spring%E5%85%A5%E9%97%A8/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 08 Nov 2021 21:22:00 +0000</pubDate>
       
       <guid>https://jibuzixin.github.io/post/spring%E5%85%A5%E9%97%A8/</guid>
       <description>一、加载xml文件/ClassPathXmlApplicationContext 1.0概要 通过xml管理bean，引用外部约束去给具有集合属</description>
     </item>
     
     <item>
-      <title>spring小细节</title>
-      <link>https://jibuzixin.github.io/post/spring%E7%9A%84%E5%B0%8F%E7%BB%86%E8%8A%82/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Servelet</title>
+      <link>https://jibuzixin.github.io/post/servelet/</link>
+      <pubDate>Wed, 15 Sep 2021 19:11:00 +0000</pubDate>
       
-      <guid>https://jibuzixin.github.io/post/spring%E7%9A%84%E5%B0%8F%E7%BB%86%E8%8A%82/</guid>
-      <description>动态sql &amp;lt;if test=&#39;&#39; &amp;gt;if语句 ，直接使用对象的属性就可以访问 &amp;lt;where&amp;gt;动态生成where，可以自动去掉语句前面的and但不可</description>
+      <guid>https://jibuzixin.github.io/post/servelet/</guid>
+      <description>一、servelet请求乱码 get方法请求乱码 String fname = request.getParameter(&amp;#34;fname&amp;#34;); //转换为字节数组“ISO-8859-1”编码 byte[] bytes = fname.getBytes(&amp;#34;ISO-8859-1&amp;#34;); //重新编码 fname = new String(bytes, &amp;#34;UTF-8&amp;#34;); post请</description>
+    </item>
+    
+    <item>
+      <title>Maven入门</title>
+      <link>https://jibuzixin.github.io/post/maven/</link>
+      <pubDate>Mon, 18 Jan 2021 20:22:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/maven/</guid>
+      <description>一、Maven 提供了一套标准化的项目结构 提供了一套标准化的构建流程 提供了一套依赖管理机制 二、Maven坐标 2.1 什么是坐标 坐标是==资源的唯一标</description>
     </item>
     
   </channel>

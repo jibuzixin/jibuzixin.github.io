@@ -7,36 +7,9 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://jibuzixin.github.io/categories/c/c++/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>gcc和g&#43;&#43;的区别</title>
-      <link>https://jibuzixin.github.io/post/gcc%E5%92%8Cg&#43;&#43;%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://jibuzixin.github.io/post/gcc%E5%92%8Cg&#43;&#43;%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
-      <description>一、gcc和g++的区别是什么 gcc 指令也为用户提供了“手动指定代表编译方式”的接口，即使用 -x 选项。例如，gcc -xc xxx 表示以编译 C 语言代码的方式编</description>
-    </item>
-    
-    <item>
-      <title>KMP算法实现</title>
-      <link>https://jibuzixin.github.io/post/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://jibuzixin.github.io/post/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</guid>
-      <description>KMP算法实现 视频链接： 【最浅显易懂的 KMP 算法讲解】 kmp算法就是为了在比较字符不相等的时候可以回溯到合适的位置，而不像普通比较字符串的方法一</description>
-    </item>
-    
-    <item>
-      <title>markdown常用语法</title>
-      <link>https://jibuzixin.github.io/post/markdown%E8%AF%AD%E6%B3%95/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://jibuzixin.github.io/post/markdown%E8%AF%AD%E6%B3%95/</guid>
-      <description>常用语法 要是我写的比较难看，可以看看官方教程： Markdown 基本语法 | Markdown 官方教程 或者 Markdown 语法速查表 | Markdown 官方教程 以上链接复制的时候直接粘贴就会出现上面这个效</description>
-    </item>
-    
-    <item>
       <title>UNIX网络编程入门</title>
       <link>https://jibuzixin.github.io/post/unix%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 13 Aug 2021 16:27:00 +0000</pubDate>
       
       <guid>https://jibuzixin.github.io/post/unix%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</guid>
       <description>UNIX网络编程初入 一、main函数传参 int mian(int argc, char **argv) argc表示传入argv的字符串个数 argv[0]表示程序 运行的全路径 argv[1]表示传</description>
@@ -45,10 +18,37 @@
     <item>
       <title>winsock编程入门</title>
       <link>https://jibuzixin.github.io/post/winsock%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 05 Jul 2021 20:17:00 +0000</pubDate>
       
       <guid>https://jibuzixin.github.io/post/winsock%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</guid>
       <description>(WinSocket自学开始) 一、声明 本人在自学过程中在此记录学习心得，如果内容有欠妥的地方还请在此下方批评，或私信，谢谢阅读。 二、常用的基</description>
+    </item>
+    
+    <item>
+      <title>gcc和g&#43;&#43;的区别</title>
+      <link>https://jibuzixin.github.io/post/gcc%E5%92%8Cg&#43;&#43;%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+      <pubDate>Thu, 06 May 2021 19:46:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/gcc%E5%92%8Cg&#43;&#43;%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+      <description>一、gcc和g++的区别是什么 gcc 指令也为用户提供了“手动指定代表编译方式”的接口，即使用 -x 选项。例如，gcc -xc xxx 表示以编译 C 语言代码的方式编</description>
+    </item>
+    
+    <item>
+      <title>markdown常用语法</title>
+      <link>https://jibuzixin.github.io/post/markdown%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Fri, 01 Jan 2021 14:27:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/markdown%E8%AF%AD%E6%B3%95/</guid>
+      <description>常用语法 要是我写的比较难看，可以看看官方教程： Markdown 基本语法 | Markdown 官方教程 或者 Markdown 语法速查表 | Markdown 官方教程 以上链接复制的时候直接粘贴就会出现上面这个效</description>
+    </item>
+    
+    <item>
+      <title>KMP算法实现</title>
+      <link>https://jibuzixin.github.io/post/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Sun, 08 Nov 2020 19:08:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</guid>
+      <description>KMP算法实现 视频链接： 【最浅显易懂的 KMP 算法讲解】 kmp算法就是为了在比较字符不相等的时候可以回溯到合适的位置，而不像普通比较字符串的方法一</description>
     </item>
     
   </channel>

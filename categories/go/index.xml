@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go on 腹有诗书气自华</title>
+    <link>https://jibuzixin.github.io/categories/go/</link>
+    <description>Recent content in go on 腹有诗书气自华</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 04 Dec 2022 14:51:33 +0000</lastBuildDate><atom:link href="https://jibuzixin.github.io/categories/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>关于vscode安装gotools安装失败的办法</title>
+      <link>https://jibuzixin.github.io/post/%E5%85%B3%E4%BA%8Evscode%E5%AE%89%E8%A3%85gotools%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5%E7%9A%84%E5%8A%9E%E6%B3%95/</link>
+      <pubDate>Sun, 04 Dec 2022 14:51:33 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/%E5%85%B3%E4%BA%8Evscode%E5%AE%89%E8%A3%85gotools%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5%E7%9A%84%E5%8A%9E%E6%B3%95/</guid>
+      <description>第一个 go env -w GOPROXY=https://goproxy.cn,direct 在终端改一下这个代理，Windows下cmd就可以，重启vscode再更新，一定要重启。 第二个 go env -w GOPROXY=https://mirrors.aliyun.com/goproxy/ 阿里的可能只能安装成功一</description>
+    </item>
+    
+  </channel>
+</rss>

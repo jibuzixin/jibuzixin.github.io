@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="腹有诗书气自华">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="img/小黑.png">
+    <meta property="twitter:image" content="img/小黑.png" />
+    
+
+    
+    <meta name="title" content="数据集和特征提取" />
+    <meta property="og:title" content="数据集和特征提取" />
+    <meta property="twitter:title" content="数据集和特征提取" />
+    
+
+    
+    <meta name="description" content=" ">
+    <meta property="og:description" content=" " />
+    <meta property="twitter:description" content=" " />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="赵化冰, zhaohuabing, Zhaohuabing, , 赵化冰的网络日志, 赵化冰的博客, Zhaohuabing Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>数据集和特征提取 | yzy的博客</title>
+
+    <link rel="canonical" href="/post/%E6%95%B0%E6%8D%AE%E9%9B%86%E5%92%8C%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.1/css/all.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">腹有诗书气自华</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">所有文章</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/c/c&#43;&#43;">c/c&#43;&#43;</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/go">go</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/java">java</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/linux">linux</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/python">python</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E5%90%8E%E7%AB%AF">后端</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E7%94%9F%E6%B4%BB">生活</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/notes/">编程历程</a></li>
+                    
+                        <li><a href="/about/">关于我</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/%e5%b0%8f%e9%bb%91.png')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/python" title="python">
+                            python
+                        </a>
+                        
+                        <a class="tag" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0" title="机器学习">
+                            机器学习
+                        </a>
+                        
+                    </div>
+                    <h1>数据集和特征提取</h1>
+                    <h2 class="subheading">机器学习入门</h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                忌不自信
+                             
+                            on 
+                            Thursday, August 5, 2021
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <h1 id="sklearn数据集"><em>sklearn数据集</em></h1>
+<h2 id="一scikit-learn数据集api介绍">一、scikit-learn数据集API介绍</h2>
+<ul>
+<li>sklearn.datasets
+加载获取流行数据集
+<strong>datasets.load_*()</strong>
+&ndash;  获取小规模数据</li>
+<li><strong>datasets.fetch_*(<code>data_home</code>=None)</strong>
+获取大规模数据集，需要从网络上下载，函数第一个参数是<strong>data_home</strong>,表示数据集下载的目录，默认是 <strong>~/sickit_learn_data/</strong></li>
+</ul>
+<h2 id="二sklearn大数据集">二、sklearn大数据集</h2>
+<ul>
+<li>sklearn.datasets.fetch_20newsgroups<code>'data_home</code>=None, <code>subset</code>=&ldquo;train&rdquo;)
+&ndash; subset：<strong>“train”或者“test”，“all”</strong>，可选</li>
+</ul>
+<h2 id="三sklearn返回值">三、sklearn返回值</h2>
+<ul>
+<li>load和fetch返回的数据集类型datasets.base.Bunch(字典格式)</li>
+<li><strong>data</strong>：特征数据集，是二维数组numpy.ndarray</li>
+<li><strong>target</strong>：标签数组，一维</li>
+<li><strong>DESCR</strong>：数据描述</li>
+<li><strong>feature_names</strong>：特征名</li>
+<li><strong>target_names</strong>：标签名</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">from</span> sklearn.datasets <span style="color:#ff79c6">import</span> load_iris
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">datasets_demo</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">    sklear数据集使用
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">    &#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    iris <span style="color:#ff79c6">=</span> load_iris()
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;花：</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>,iris)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;特征值名：</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>,iris<span style="color:#ff79c6">.</span>feature_names)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;类型：</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>,iris<span style="color:#ff79c6">.</span>data<span style="color:#ff79c6">.</span>shape[<span style="color:#bd93f9">0</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;第二：</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>,iris<span style="color:#ff79c6">.</span>target<span style="color:#ff79c6">.</span>shape[<span style="color:#bd93f9">0</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    datasets_demo()
+</span></span></code></pre></div><h1 id="数据集划分api"><em>数据集划分api</em></h1>
+<ul>
+<li>sklearn.model_selection.train_test_split(arrays,*options)</li>
+<li><strong>x</strong> 数据集的特征值</li>
+<li><strong>y</strong> 数据集的标签值</li>
+<li><strong>test_size</strong> （一般<code>float</code>类型）</li>
+<li><strong>random_state</strong> 随机数种子</li>
+<li><strong>return</strong> 训练集特征值，测试集特征值，训练集目标值，测试集目标值</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">from</span> sklearn.datasets <span style="color:#ff79c6">import</span> load_iris
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">from</span> sklearn.model_selection <span style="color:#ff79c6">import</span> train_test_split
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">datasets_demo</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">    sklear数据集使用
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">    &#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    iris <span style="color:#ff79c6">=</span> load_iris()
+</span></span><span style="display:flex;"><span>    x, y, train_name, test_name <span style="color:#ff79c6">=</span> train_test_split(iris<span style="color:#ff79c6">.</span>data, iris<span style="color:#ff79c6">.</span>target, test_size<span style="color:#ff79c6">=</span><span style="color:#bd93f9">0.2</span>, random_state<span style="color:#ff79c6">=</span><span style="color:#bd93f9">22</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;训练集的特征值：</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>,x<span style="color:#ff79c6">.</span>shape)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;测试集的特征值：</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>,y<span style="color:#ff79c6">.</span>shape)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    datasets_demo()
+</span></span></code></pre></div><p><strong>补充：</strong><a href="https://blog.csdn.net/xingchengmeng/article/details/62881859?utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control">shape用法</a></p>
+<h1 id="特征值提取"><em>特征值提取</em></h1>
+<p>特征提取API<code>sklearn.feature_extraction</code></p>
+<h2 id="一字典特征提取">一、字典特征提取</h2>
+<ul>
+<li>sklearn.feature_extraction.DictVectorizer(<code>sparse</code>=Ture)</li>
+<li>DictVectorizer.fit_transform(x) X：包含字典的迭代器返回值，返回sparse（稀疏）矩阵</li>
+<li>DictVectorizer.inverse_transform(x) X：array数组或者sparse矩阵，返回值：转换之前的数据格式</li>
+<li>DictVectorizer.get_feature_names()返回类别名称</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">from</span> sklearn.feature_extraction <span style="color:#ff79c6">import</span> DictVectorizer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">dict_demo</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">    字典特征抽取
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">    &#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    data <span style="color:#ff79c6">=</span> [{<span style="color:#f1fa8c">&#39;city&#39;</span>:<span style="color:#f1fa8c">&#39;北京&#39;</span>,<span style="color:#f1fa8c">&#39;temperature&#39;</span>:<span style="color:#bd93f9">100</span>}, {<span style="color:#f1fa8c">&#39;city&#39;</span>:<span style="color:#f1fa8c">&#39;上海&#39;</span>,<span style="color:#f1fa8c">&#39;temperature&#39;</span>:<span style="color:#bd93f9">60</span>}, {<span style="color:#f1fa8c">&#39;city&#39;</span>:<span style="color:#f1fa8c">&#39;深圳&#39;</span>,<span style="color:#f1fa8c">&#39;temperature&#39;</span>:<span style="color:#bd93f9">30</span>}]
+</span></span><span style="display:flex;"><span>    tranfer <span style="color:#ff79c6">=</span> DictVectorizer(sparse<span style="color:#ff79c6">=</span><span style="color:#ff79c6">False</span>)
+</span></span><span style="display:flex;"><span>    data_new <span style="color:#ff79c6">=</span> tranfer<span style="color:#ff79c6">.</span>fit_transform(data)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;data_new:</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, data_new)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(transfer<span style="color:#ff79c6">.</span>get_feature_names())
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    dict_demo()
+</span></span></code></pre></div><h2 id="二文本特征提取">二、文本特征提取</h2>
+<ul>
+<li>
+<p><strong>sklearn.feature_extranction.text.CountVectorizer(<code>stop_words</code>=[停用词])
+==返回词频矩阵==</strong></p>
+</li>
+<li>
+<p>CountVectorizer.fit_transform(x) X</p>
+</li>
+<li>
+<p>CountVectorizer.inverse_transform(x) X</p>
+</li>
+<li>
+<p>CountVectorizer.get_feature_names()</p>
+</li>
+<li>
+<p>==代码和“字典”类似==</p>
+</li>
+<li>
+<p><code>import jieba</code>自动分词（中午）</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">cut_word</span>(text):
+</span></span><span style="display:flex;"><span>   <span style="color:#f1fa8c">&#39;&#39;&#39;中文分词函数&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">&#34; &#34;</span><span style="color:#ff79c6">.</span>join( <span style="color:#8be9fd;font-style:italic">list</span> ( jieba<span style="color:#ff79c6">.</span>cut (text) ) )
+</span></span></code></pre></div><p><a href="https://www.runoob.com/python3/python3-string-join.html">join函数用法</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">dict_text</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">    汉子
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">    &#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    data_2 <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>    data_1 <span style="color:#ff79c6">=</span> [<span style="color:#f1fa8c">&#34;今晚我的好朋友要来&#34;</span>,<span style="color:#f1fa8c">&#34;我们都是好朋友&#34;</span>,<span style="color:#f1fa8c">&#34;你不是我的好朋友啊&#34;</span>]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> text <span style="color:#ff79c6">in</span> data_1:
+</span></span><span style="display:flex;"><span>       data_2<span style="color:#ff79c6">.</span>append( <span style="color:#f1fa8c">&#34; &#34;</span><span style="color:#ff79c6">.</span>join(<span style="color:#8be9fd;font-style:italic">list</span>(jieba<span style="color:#ff79c6">.</span>cut(text) ) ) )
+</span></span><span style="display:flex;"><span>    tranfer <span style="color:#ff79c6">=</span> CountVectorizer(stop_words<span style="color:#ff79c6">=</span>[<span style="color:#f1fa8c">&#34;我&#34;</span>,<span style="color:#f1fa8c">&#34;是&#34;</span>])
+</span></span><span style="display:flex;"><span>    data_new <span style="color:#ff79c6">=</span> tranfer<span style="color:#ff79c6">.</span>fit_transform(data_2)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">&#34;特征矩阵:</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>,data_new<span style="color:#ff79c6">.</span>toarray(),<span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">特征名：</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>,tranfer<span style="color:#ff79c6">.</span>get_feature_names())
+</span></span></code></pre></div><h2 id="三tf-idf文本特征提取找关键词">三、Tf-idf文本特征提取（找关键词）</h2>
+<ol>
+<li>TF-IDF：衡量一个词的重要性</li>
+<li><strong>公式</strong>——TF：<strong>词频</strong>（term frequency），某一个词在该文章的频率。
+IDF：<strong>逆向文档频率</strong>（inverse document frequency）,是一个词普遍重要性的度量。可由<strong>总文件数目除以包含该词之文件的数目，再将得到的商除以10为底的对数得到</strong>。</li>
+</ol>
+<h4 id="api">API</h4>
+<ul>
+<li>sklearn.feature_extraction.text.TfidfVectorizer(<code>stop_words</code>=None&hellip;..)</li>
+<li>返回词的权重矩阵</li>
+<li>TfidfVectorizer.fit_transform(X):	&ldquo;<strong>X</strong>&ldquo;文本或者包含文本字符串的可迭代对象		&ldquo;<strong>返回值</strong>&ldquo;返回sparse矩阵</li>
+<li>TfidfVectorizer.inverse_transform(X)&rdquo;<strong>X</strong>&ldquo;array数组或者sparse矩阵&rdquo;<strong>返回值</strong>&ldquo;转换之前的数据格式</li>
+<li>TfidfVectorizer.get_feature_names()</li>
+</ul>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/winsock%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/" data-toggle="tooltip" data-placement="top" title="winsock编程入门">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/unix%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/" data-toggle="tooltip" data-placement="top" title="UNIX网络编程入门">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                 
+
+<script src="https://giscus.app/client.js"
+        data-repo="jibuzixin/jibuzixin.github.io"
+        data-repo-id="R_kgDOI_E1ug"
+        data-category="Show and tell"
+        data-category-id="DIC_kwDOI_E1us4CURld"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/linux' title="linux">
+                            linux
+                        </a>
+                        
+                        
+                        
+                        <a href='/tags/python' title="python">
+                            python
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/spring' title="spring">
+                            spring
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E5%89%8D%E7%AB%AF' title="前端">
+                            前端
+                        </a>
+                        
+                        
+                        
+                        <a href='/tags/%E5%90%8E%E7%AB%AF' title="后端">
+                            后端
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E6%8F%92%E4%BB%B6' title="插件">
+                            插件
+                        </a>
+                        
+                        
+                        
+                        <a href='/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0' title="机器学习">
+                            机器学习
+                        </a>
+                        
+                        
+                        
+                        <a href='/tags/%E7%94%9F%E6%B4%BB' title="生活">
+                            生活
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B' title="网络编程">
+                            网络编程
+                        </a>
+                        
+                        
+                        
+                        <a href='/tags/%E8%84%9A%E6%9C%AC' title="脚本">
+                            脚本
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:this.jibuzixin@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    <li>
+                        <a target="_blank" href="/img/%e5%be%ae%e4%bf%a1%e6%89%ab%e7%a0%81.png">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/jibuzixin">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; 腹有诗书气自华 2023
+                    <br>
+                    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on 腹有诗书气自华</title>
+    <link>https://jibuzixin.github.io/categories/linux/</link>
+    <description>Recent content in linux on 腹有诗书气自华</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 02 Nov 2022 13:04:01 +0000</lastBuildDate><atom:link href="https://jibuzixin.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>linuxShell脚本无法运行</title>
+      <link>https://jibuzixin.github.io/post/linuxshell%E8%84%9A%E6%9C%AC%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C/</link>
+      <pubDate>Wed, 02 Nov 2022 13:04:01 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/linuxshell%E8%84%9A%E6%9C%AC%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C/</guid>
+      <description>看了那么多就这个有用，其他的网上有资源你们可以找找 参考链接 原文 一、问题描述 定时任务在命令行直接执行可以正确执行，但是加入定时任务之后没有执行</description>
+    </item>
+    
+  </channel>
+</rss>

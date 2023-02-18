@@ -17,18 +17,45 @@
     </item>
     
     <item>
-      <title>c/c&#43;&#43;</title>
-      <link>https://jibuzixin.github.io/categories/c/c&#43;&#43;/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>go</title>
+      <link>https://jibuzixin.github.io/categories/go/</link>
+      <pubDate>Sun, 04 Dec 2022 14:51:33 +0000</pubDate>
       
-      <guid>https://jibuzixin.github.io/categories/c/c&#43;&#43;/</guid>
+      <guid>https://jibuzixin.github.io/categories/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://jibuzixin.github.io/categories/python/</link>
+      <pubDate>Wed, 02 Nov 2022 16:10:33 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://jibuzixin.github.io/categories/linux/</link>
+      <pubDate>Wed, 02 Nov 2022 13:04:01 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/categories/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>后端</title>
+      <link>https://jibuzixin.github.io/categories/%E5%90%8E%E7%AB%AF/</link>
+      <pubDate>Wed, 07 Sep 2022 14:34:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/categories/%E5%90%8E%E7%AB%AF/</guid>
       <description></description>
     </item>
     
     <item>
       <title>java</title>
       <link>https://jibuzixin.github.io/categories/java/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 15 Jun 2022 13:34:00 +0000</pubDate>
       
       <guid>https://jibuzixin.github.io/categories/java/</guid>
       <description></description>
@@ -37,18 +64,18 @@
     <item>
       <title>前端</title>
       <link>https://jibuzixin.github.io/categories/%E5%89%8D%E7%AB%AF/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Feb 2021 15:32:00 +0000</pubDate>
       
       <guid>https://jibuzixin.github.io/categories/%E5%89%8D%E7%AB%AF/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>后端</title>
-      <link>https://jibuzixin.github.io/categories/%E5%90%8E%E7%AB%AF/</link>
+      <title>c/c&#43;&#43;</title>
+      <link>https://jibuzixin.github.io/categories/c/c&#43;&#43;/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://jibuzixin.github.io/categories/%E5%90%8E%E7%AB%AF/</guid>
+      <guid>https://jibuzixin.github.io/categories/c/c&#43;&#43;/</guid>
       <description></description>
     </item>
     

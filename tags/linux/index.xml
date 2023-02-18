@@ -5,11 +5,21 @@
     <link>https://jibuzixin.github.io/tags/linux/</link>
     <description>Recent content in linux on 腹有诗书气自华</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://jibuzixin.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Wed, 02 Nov 2022 13:04:01 +0000</lastBuildDate><atom:link href="https://jibuzixin.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>linuxShell脚本无法运行</title>
+      <link>https://jibuzixin.github.io/post/linuxshell%E8%84%9A%E6%9C%AC%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C/</link>
+      <pubDate>Wed, 02 Nov 2022 13:04:01 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/linuxshell%E8%84%9A%E6%9C%AC%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C/</guid>
+      <description>看了那么多就这个有用，其他的网上有资源你们可以找找 参考链接 原文 一、问题描述 定时任务在命令行直接执行可以正确执行，但是加入定时任务之后没有执行</description>
+    </item>
+    
     <item>
       <title>gcc和g&#43;&#43;的区别</title>
       <link>https://jibuzixin.github.io/post/gcc%E5%92%8Cg&#43;&#43;%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 06 May 2021 19:46:00 +0000</pubDate>
       
       <guid>https://jibuzixin.github.io/post/gcc%E5%92%8Cg&#43;&#43;%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
       <description>一、gcc和g++的区别是什么 gcc 指令也为用户提供了“手动指定代表编译方式”的接口，即使用 -x 选项。例如，gcc -xc xxx 表示以编译 C 语言代码的方式编</description>
