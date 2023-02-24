@@ -6,7 +6,16 @@
     <description>Recent content in Posts on 腹有诗书气自华</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Dec 2022 09:38:00 +0000</lastBuildDate><atom:link href="https://jibuzixin.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Dec 2022 12:59:00 +0000</lastBuildDate><atom:link href="https://jibuzixin.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1003Emergency</title>
+      <link>https://jibuzixin.github.io/post/emergency/</link>
+      <pubDate>Sat, 24 Dec 2022 12:59:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/emergency/</guid>
+      <description>1003 Emergency 描述 As an emergency rescue team leader of a city, you are given a special map of your country. The map shows several scattered cities connected by some roads. Amount of rescue teams in each city and the length of each road between any pair of cities are marked on the map. When there is an emergency call to you from some other city, your job is</description>
+    </item>
+    
     <item>
       <title>对实验室纳新的回答</title>
       <link>https://jibuzixin.github.io/post/%E4%B8%80%E5%85%B3%E4%BA%8E%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</link>
@@ -212,6 +221,15 @@
       
       <guid>https://jibuzixin.github.io/post/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</guid>
       <description>KMP算法实现 视频链接： 【最浅显易懂的 KMP 算法讲解】 kmp算法就是为了在比较字符不相等的时候可以回溯到合适的位置，而不像普通比较字符串的方法一</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://jibuzixin.github.io/post/asdasda/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jibuzixin.github.io/post/asdasda/</guid>
+      <description>asdasda</description>
     </item>
     
   </channel>

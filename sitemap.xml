@@ -2,13 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://jibuzixin.github.io/categories/</loc>
-    <lastmod>2022-12-10T09:38:00+00:00</lastmod>
+    <loc>https://jibuzixin.github.io/post/emergency/</loc>
+    <lastmod>2022-12-24T12:59:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jibuzixin.github.io/tags/c&#43;&#43;/</loc>
+    <lastmod>2022-12-24T12:59:00+00:00</lastmod>
   </url><url>
     <loc>https://jibuzixin.github.io/post/</loc>
-    <lastmod>2022-12-10T09:38:00+00:00</lastmod>
+    <lastmod>2022-12-24T12:59:00+00:00</lastmod>
   </url><url>
     <loc>https://jibuzixin.github.io/tags/</loc>
+    <lastmod>2022-12-24T12:59:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jibuzixin.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2022-12-24T12:59:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jibuzixin.github.io/</loc>
+    <lastmod>2022-12-24T12:59:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jibuzixin.github.io/categories/</loc>
     <lastmod>2022-12-10T09:38:00+00:00</lastmod>
   </url><url>
     <loc>https://jibuzixin.github.io/post/%E4%B8%80%E5%85%B3%E4%BA%8E%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</loc>
@@ -18,9 +30,6 @@
     <lastmod>2022-12-10T09:38:00+00:00</lastmod>
   </url><url>
     <loc>https://jibuzixin.github.io/categories/%E7%94%9F%E6%B4%BB/</loc>
-    <lastmod>2022-12-10T09:38:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jibuzixin.github.io/</loc>
     <lastmod>2022-12-10T09:38:00+00:00</lastmod>
   </url><url>
     <loc>https://jibuzixin.github.io/tags/go/</loc>
@@ -170,14 +179,10 @@
     <loc>https://jibuzixin.github.io/post/%E5%A4%A7%E4%B8%80%E5%BB%BA%E8%AE%AE/</loc>
     <lastmod>2020-11-28T12:30:00+00:00</lastmod>
   </url><url>
-    <loc>https://jibuzixin.github.io/tags/c&#43;&#43;/</loc>
-    <lastmod>2020-11-08T19:08:00+00:00</lastmod>
-  </url><url>
     <loc>https://jibuzixin.github.io/post/kmp%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</loc>
     <lastmod>2020-11-08T19:08:00+00:00</lastmod>
   </url><url>
-    <loc>https://jibuzixin.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2020-11-08T19:08:00+00:00</lastmod>
+    <loc>https://jibuzixin.github.io/post/asdasda/</loc>
   </url><url>
     <loc>https://jibuzixin.github.io/categories/c/c&#43;&#43;/</loc>
   </url>

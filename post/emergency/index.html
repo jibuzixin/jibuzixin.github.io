@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="腹有诗书气自华">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="img/小黑.png">
+    <meta property="twitter:image" content="img/小黑.png" />
+    
+
+    
+    <meta name="title" content="1003Emergency" />
+    <meta property="og:title" content="1003Emergency" />
+    <meta property="twitter:title" content="1003Emergency" />
+    
+
+    
+    <meta name="description" content=" ">
+    <meta property="og:description" content=" " />
+    <meta property="twitter:description" content=" " />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="赵化冰, zhaohuabing, Zhaohuabing, , 赵化冰的网络日志, 赵化冰的博客, Zhaohuabing Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>1003Emergency | yzy的博客</title>
+
+    <link rel="canonical" href="/post/emergency/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.1/css/all.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">腹有诗书气自华</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">所有文章</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/c/c&#43;&#43;">c/c&#43;&#43;</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/go">go</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/java">java</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/linux">linux</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/python">python</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E5%90%8E%E7%AB%AF">后端</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/%E7%94%9F%E6%B4%BB">生活</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/notes/">编程历程</a></li>
+                    
+                        <li><a href="/about/">关于我</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/%e5%b0%8f%e9%bb%91.png')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/%E7%AE%97%E6%B3%95" title="算法">
+                            算法
+                        </a>
+                        
+                        <a class="tag" href="/tags/c&#43;&#43;" title="c&#43;&#43;">
+                            c&#43;&#43;
+                        </a>
+                        
+                    </div>
+                    <h1>1003Emergency</h1>
+                    <h2 class="subheading">PTA</h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                忌不自信
+                             
+                            on 
+                            Saturday, December 24, 2022
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <h1 id="1003-emergency">1003 Emergency</h1>
+<h2 id="描述">描述</h2>
+<p>As an emergency rescue team leader of a city, you are given a special map of your country. The map shows several scattered cities connected by some roads. Amount of rescue teams in each city and the length of each road between any pair of cities are marked on the map. When there is an emergency call to you from some other city, your job is to lead your men to the place as quickly as possible, and at the mean time, call up as many hands on the way as possible.</p>
+<h2 id="input-specification">Input Specification:</h2>
+<p>Each input file contains one test case. For each test case, the first line contains 4 positive integers: <em>N</em> (≤500) - the number of cities (and the cities are numbered from 0 to <em>N</em>−1), <em>M</em> - the number of roads, <em>C</em>1 and <em>C</em>2- the cities that you are currently in and that you must save, respectively. The next line contains <em>N</em> integers, where the <em>i</em>-th integer is the number of rescue teams in the <em>i</em>-th city. Then <em>M</em> lines follow, each describes a road with three integers <em>c</em>1, <em>c</em>2 and <em>L</em>, which are the pair of cities connected by a road and the length of that road, respectively. It is guaranteed that there exists at least one path from <em>C</em>1 to <em>C</em>2.</p>
+<h2 id="output-specification">Output Specification:</h2>
+<p>For each test case, print in one line two numbers: the number of different shortest paths between <em>C</em>1 and <em>C</em>2, and the maximum amount of rescue teams you can possibly gather. All the numbers in a line must be separated by exactly one space, and there is no extra space allowed at the end of a line.</p>
+<h2 id="sample-input">Sample Input:</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tex" data-lang="tex"><span style="display:flex;"><span>5 6 0 2
+</span></span><span style="display:flex;"><span>1 2 1 5 3
+</span></span><span style="display:flex;"><span>0 1 1
+</span></span><span style="display:flex;"><span>0 2 2
+</span></span><span style="display:flex;"><span>0 3 1
+</span></span><span style="display:flex;"><span>1 2 1
+</span></span><span style="display:flex;"><span>2 4 1
+</span></span><span style="display:flex;"><span>3 4 1
+</span></span></code></pre></div><h2 id="sample-output">Sample Output:</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tex" data-lang="tex"><span style="display:flex;"><span>2 4
+</span></span></code></pre></div><h2 id="题目大意">题目大意</h2>
+<p>有$N$ 个城市，$M$ 条边，边有权重，也就是距离，每个城市还有救援队的数量。求：选择最短路径有几条，最短路径中最多能集合多少救援队。</p>
+<h2 id="解题思路">解题思路</h2>
+<p>首先用<code>迪杰斯特拉</code>算法可以求出从<code>起点</code>开始到<code>任意一点</code>的最短路径，然后在更新到某一点的最短距离的过程中会遇到<code>距离相等</code>不更新的情况，这就会在到前一个点<code>有多少路径</code>的基础上，加上到当前点<code>有多少路径</code>才是要更新从<code>起点</code>到<code>当前点</code>的<code>最短路径数量</code>。在此基础上再去判断<code>累计救援队数量</code>是否比当前值大。如果大，那就更新，否则不。</p>
+<p><strong>特别注意的是</strong></p>
+<ol>
+<li>他有可能会问到自身到自身的情况，所以我们要先更新自身的信息。即使在之后的算法中有的信息用不到，但测试用例还会用</li>
+</ol>
+<h2 id="代码解析">代码解析</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#ff79c6">typedef</span> <span style="color:#ff79c6">struct</span> <span style="color:#50fa7b">NODE</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> flag;       <span style="color:#6272a4">//标记该节点是否放过过了
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd">int</span> num;        <span style="color:#6272a4">//当前城市的救援队数
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd">int</span> addNum;     <span style="color:#6272a4">//最短路径中，最多能够凑到的救援队数
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>}node;
+</span></span></code></pre></div><ul>
+<li>这里我使用一个结构体来表示当前城市的信息，其中<code>flag</code>属性表示了迪杰斯特拉算法中的标记数组</li>
+<li>其余看注释，这些变量记得初始化</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>node city[<span style="color:#bd93f9">500</span>];     <span style="color:#6272a4">//城市
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#8be9fd">int</span> maparr[<span style="color:#bd93f9">500</span>][<span style="color:#bd93f9">500</span>] <span style="color:#ff79c6">=</span> {<span style="color:#bd93f9">0</span>};
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> dis[<span style="color:#bd93f9">500</span>] <span style="color:#ff79c6">=</span> {<span style="color:#bd93f9">0</span>}; <span style="color:#6272a4">//start到i城市的最短距离
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#8be9fd">int</span> nums[<span style="color:#bd93f9">500</span>] <span style="color:#ff79c6">=</span> {<span style="color:#bd93f9">0</span>};    <span style="color:#6272a4">//start到i最短路径的数量
+</span></span></span></code></pre></div><ul>
+<li><code>maparr</code>二维数组存图的信息，邻接矩阵</li>
+<li><code>dis</code>数组就是迪杰斯特拉从起点到<code>i-th</code>点的最短距离</li>
+<li><code>nums</code>数组表示到<code>i-th</code>点最短路径有几条</li>
+</ul>
+<p><strong>迪杰斯特拉算法核心</strong></p>
+<ul>
+<li>初始化；首先初始化从起点开始到有连接边的<code>dis</code>，在这之前应该初始化<code>邻接矩阵</code>的值为<code>infty</code>；</li>
+<li>然后外层遍历<code>n</code>次；每次标记一个排除的节点；</li>
+<li>内层第一次遍历寻找最短路径的那个点；</li>
+<li>然后标记<code>true</code>；</li>
+<li>然后再遍历<code>n</code>次，更新<code>dis</code>数组，如果<code>dis[j] &gt; dis[post] + maparr[post][j]</code>表明有更短的距离。如果两个点没有边直接相连，那么<code>dis</code>仍然是<code>infty</code>加个<code>dis[post]</code>等式仍然有效。</li>
+<li>然后再更新<code>dis</code>数组的那层循环上做些修改就能得到完整代码，如下：</li>
+</ul>
+<h2 id="完整代码">完整代码</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#6272a4">//
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">//  pjc-3.cpp
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">//  pta_lian
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">//
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">//  Created by 忌不自信 on 2023/2/22.
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">//
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;iostream&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;cstring&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;math.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">using</span> <span style="color:#ff79c6">namespace</span> std;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">const</span> <span style="color:#8be9fd">int</span> inf<span style="color:#ff79c6">=</span><span style="color:#bd93f9">0x3f3f3f3f</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">typedef</span> <span style="color:#ff79c6">struct</span> <span style="color:#50fa7b">NODE</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> flag;       <span style="color:#6272a4">//标记该节点是否放过过了
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd">int</span> num;        <span style="color:#6272a4">//当前城市的救援队数
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd">int</span> addNum;     <span style="color:#6272a4">//最短路径中，最多能够凑到的救援队数
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>}node;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>node city[<span style="color:#bd93f9">500</span>];     <span style="color:#6272a4">//城市
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#8be9fd">int</span> maparr[<span style="color:#bd93f9">500</span>][<span style="color:#bd93f9">500</span>] <span style="color:#ff79c6">=</span> {<span style="color:#bd93f9">0</span>};
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> dis[<span style="color:#bd93f9">500</span>] <span style="color:#ff79c6">=</span> {<span style="color:#bd93f9">0</span>}; <span style="color:#6272a4">//start到i城市的最短距离
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#8be9fd">int</span> nums[<span style="color:#bd93f9">500</span>] <span style="color:#ff79c6">=</span> {<span style="color:#bd93f9">0</span>};    <span style="color:#6272a4">//start到i最短路径的数量
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(){
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">//初始化
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    memset(maparr, inf, <span style="color:#ff79c6">sizeof</span>(maparr));
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">//顶点数，边数，起点和终点
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd">int</span> n, m, start, end;
+</span></span><span style="display:flex;"><span>    cin <span style="color:#ff79c6">&gt;&gt;</span> n <span style="color:#ff79c6">&gt;&gt;</span> m <span style="color:#ff79c6">&gt;&gt;</span> start <span style="color:#ff79c6">&gt;&gt;</span> end;
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">//开始记录i-th城市的信息，并初始化
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">for</span>(<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> n; i <span style="color:#ff79c6">++</span>){
+</span></span><span style="display:flex;"><span>        cin <span style="color:#ff79c6">&gt;&gt;</span> city[i].num;
+</span></span><span style="display:flex;"><span>        city[i].flag <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>        city[i].addNum <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">//邻接矩阵
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd">int</span> n1, n2, len <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span>(<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> m; i <span style="color:#ff79c6">++</span>){
+</span></span><span style="display:flex;"><span>        cin <span style="color:#ff79c6">&gt;&gt;</span> n1 <span style="color:#ff79c6">&gt;&gt;</span> n2 <span style="color:#ff79c6">&gt;&gt;</span> len;
+</span></span><span style="display:flex;"><span>        maparr[n1][n2] <span style="color:#ff79c6">=</span> len;
+</span></span><span style="display:flex;"><span>        maparr[n2][n1] <span style="color:#ff79c6">=</span> len;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">//初始化
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd">int</span> min <span style="color:#ff79c6">=</span> inf;
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> post <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">//狄杰斯特拉初始化起点
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">for</span>(<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> n; i <span style="color:#ff79c6">++</span>){
+</span></span><span style="display:flex;"><span>        dis[i] <span style="color:#ff79c6">=</span> maparr[start][i];
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span>(maparr[start][i] <span style="color:#ff79c6">!=</span> inf){
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">//刚开始从自身算就算1条路径
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>            nums[i] <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">//然后累计到救援队的数量，两个加起来就行
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>            city[i].addNum <span style="color:#ff79c6">=</span> city[i].num <span style="color:#ff79c6">+</span> city[start].num;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">//把刚开始的城市标记
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    city[start].flag <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">//如果是自身到自身，那么就会有这种情况
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    nums[start] <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>;
+</span></span><span style="display:flex;"><span>    city[start].addNum <span style="color:#ff79c6">=</span> city[start].num;
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">//狄杰斯特拉算法
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">for</span>(<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> n; i <span style="color:#ff79c6">++</span>){
+</span></span><span style="display:flex;"><span>        min <span style="color:#ff79c6">=</span> inf;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span>(<span style="color:#8be9fd">int</span> j <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; j <span style="color:#ff79c6">&lt;</span> n; j <span style="color:#ff79c6">++</span>){
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">//寻找未被选择的，最短的路径
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>            <span style="color:#ff79c6">if</span>(city[j].flag <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span> <span style="color:#ff79c6">&amp;&amp;</span> dis[j] <span style="color:#ff79c6">&lt;</span> min){
+</span></span><span style="display:flex;"><span>                min <span style="color:#ff79c6">=</span> dis[j];
+</span></span><span style="display:flex;"><span>                post <span style="color:#ff79c6">=</span> j;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">//找到最小的标记
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        city[post].flag <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span>(<span style="color:#8be9fd">int</span> j <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; j <span style="color:#ff79c6">&lt;</span> n; j <span style="color:#ff79c6">++</span>){
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">//如果这个城市还未被标记
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>            <span style="color:#ff79c6">if</span>(city[j].flag <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span>){
+</span></span><span style="display:flex;"><span>                <span style="color:#6272a4">//原先的dis距离和dis[post]加post到j的实际距离比较
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>                <span style="color:#ff79c6">if</span>(dis[j] <span style="color:#ff79c6">&gt;</span> dis[post] <span style="color:#ff79c6">+</span> maparr[post][j]){
+</span></span><span style="display:flex;"><span>                    <span style="color:#6272a4">//有更短的就更新
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>                    dis[j] <span style="color:#ff79c6">=</span> dis[post] <span style="color:#ff79c6">+</span> maparr[post][j];
+</span></span><span style="display:flex;"><span>                    <span style="color:#6272a4">//连同到前一个城市的路径数一块更新
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>                    nums[j] <span style="color:#ff79c6">=</span> nums[post];
+</span></span><span style="display:flex;"><span>                    <span style="color:#6272a4">//因为有更小的，所以不用比较，直接更新累计的救援队数
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>                    city[j].addNum <span style="color:#ff79c6">=</span> city[j].num <span style="color:#ff79c6">+</span> city[post].addNum;
+</span></span><span style="display:flex;"><span>                }<span style="color:#ff79c6">else</span> <span style="color:#ff79c6">if</span>(dis[j] <span style="color:#ff79c6">==</span> dis[post] <span style="color:#ff79c6">+</span> maparr[post][j]){
+</span></span><span style="display:flex;"><span>                    <span style="color:#6272a4">//相等的时候就说明有多个路径，然后加上自身的
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>                    nums[j] <span style="color:#ff79c6">+=</span> nums[post];
+</span></span><span style="display:flex;"><span>                    <span style="color:#6272a4">//累计的救援队数选最大的
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>                    city[j].addNum <span style="color:#ff79c6">=</span> max(city[j].addNum, city[j].num <span style="color:#ff79c6">+</span> city[post].addNum);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    cout <span style="color:#ff79c6">&lt;&lt;</span> nums[end] <span style="color:#ff79c6">&lt;&lt;</span><span style="color:#f1fa8c">&#34; &#34;</span><span style="color:#ff79c6">&lt;&lt;</span> city[end].addNum <span style="color:#ff79c6">&lt;&lt;</span>endl;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/%E4%B8%80%E5%85%B3%E4%BA%8E%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/" data-toggle="tooltip" data-placement="top" title="对实验室纳新的回答">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+                
+
+                 
+
+<script src="https://giscus.app/client.js"
+        data-repo="jibuzixin/jibuzixin.github.io"
+        data-repo-id="R_kgDOI_E1ug"
+        data-category="Show and tell"
+        data-category-id="DIC_kwDOI_E1us4CURld"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href='/tags/c&#43;&#43;' title="c&#43;&#43;">
+                            c&#43;&#43;
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/linux' title="linux">
+                            linux
+                        </a>
+                        
+                        
+                        
+                        <a href='/tags/python' title="python">
+                            python
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/spring' title="spring">
+                            spring
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E5%89%8D%E7%AB%AF' title="前端">
+                            前端
+                        </a>
+                        
+                        
+                        
+                        <a href='/tags/%E5%90%8E%E7%AB%AF' title="后端">
+                            后端
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href='/tags/%E6%8F%92%E4%BB%B6' title="插件">
+                            插件
+                        </a>
+                        
+                        
+                        
+                        <a href='/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0' title="机器学习">
+                            机器学习
+                        </a>
+                        
+                        
+                        
+                        <a href='/tags/%E7%94%9F%E6%B4%BB' title="生活">
+                            生活
+                        </a>
+                        
+                        
+                        
+                        <a href='/tags/%E7%AE%97%E6%B3%95' title="算法">
+                            算法
+                        </a>
+                        
+                        
+                        
+                        <a href='/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B' title="网络编程">
+                            网络编程
+                        </a>
+                        
+                        
+                        
+                        <a href='/tags/%E8%84%9A%E6%9C%AC' title="脚本">
+                            脚本
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:this.jibuzixin@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    <li>
+                        <a target="_blank" href="/img/%e5%be%ae%e4%bf%a1%e6%89%ab%e7%a0%81.png">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/jibuzixin">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; 腹有诗书气自华 2023
+                    <br>
+                    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>
